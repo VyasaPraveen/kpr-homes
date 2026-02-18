@@ -2,22 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-primary: #1a365d;
+    --color-primary-bright: #2563eb;
+    --color-accent: #d4a843;
+    --color-accent-bright: #f0c040;
+    --color-background: #ffffff;
+    --color-surface: #f8fafc;
+    --color-text-primary: #1f2937;
+    --color-text-secondary: #6b7280;
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1a365d, #2b4c8f);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #0f1f3a, #1a365d);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-500 to-gold-400;
+  }
+
+  .text-gradient-navy {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-navy-900 to-blue-500;
+  }
+
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+  }
+
+  .gold-border-bottom {
+    @apply relative;
+  }
+  .gold-border-bottom::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-16 h-1 rounded-full;
+    background: linear-gradient(135deg, #d4a843, #f0c040);
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
 
 @layer utilities {

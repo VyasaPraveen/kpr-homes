@@ -1,0 +1,57 @@
+import { PackageFeature, Package } from "@/types";
+
+export const packages: Package[] = [
+  {
+    name: "Standard",
+    tier: "standard",
+    pricePerSqft: 1800,
+    description: "Quality construction with reliable materials and finishes, perfect for budget-conscious projects.",
+    features: ["PCC Foundation", "Ceramic Tile Flooring", "Granite Kitchen Countertop", "Standard Bathroom Fittings", "Copper Wiring", "Basic Switches"],
+  },
+  {
+    name: "Premium",
+    tier: "premium",
+    pricePerSqft: 2800,
+    description: "Enhanced quality with premium materials, modern design, and smart features for the discerning homeowner.",
+    highlighted: true,
+    features: ["RCC Raft Foundation", "Vitrified Tile Flooring", "Quartz Kitchen Countertop", "Branded Bathroom Fittings", "Fire-resistant Wiring", "Modular Switches"],
+  },
+  {
+    name: "Luxury",
+    tier: "luxury",
+    pricePerSqft: 4500,
+    description: "The finest materials, bespoke design, and cutting-edge technology for an unparalleled living experience.",
+    features: ["RCC Raft + Waterproofing", "Italian Marble Flooring", "Custom Marble Countertop", "Imported Luxury Fittings", "Smart Wiring System", "Touch-panel Controls"],
+  },
+];
+
+export const packageFeatures: PackageFeature[] = [
+  { category: "Structure", feature: "Foundation Type", standard: "PCC Foundation", premium: "RCC Raft Foundation", luxury: "RCC Raft + Waterproofing", tooltip: "The foundation type determines the structural strength and longevity of your building" },
+  { category: "Structure", feature: "Wall Construction", standard: "Standard Bricks", premium: "AAC Blocks", luxury: "AAC Blocks + Insulation", tooltip: "Wall material affects thermal insulation and soundproofing" },
+  { category: "Structure", feature: "Roofing", standard: "RCC Slab", premium: "RCC Slab + Waterproofing", luxury: "RCC Slab + Insulation + Waterproofing" },
+  { category: "Structure", feature: "Steel Quality", standard: "Fe500", premium: "Fe500D", luxury: "Fe550D TMT" },
+  { category: "Finishes", feature: "Flooring", standard: "Ceramic Tiles", premium: "Vitrified Tiles", luxury: "Italian Marble" },
+  { category: "Finishes", feature: "Wall Finish", standard: "Putty + Emulsion", premium: "POP + Premium Paint", luxury: "Texture Paint + Designer Walls" },
+  { category: "Finishes", feature: "Ceiling", standard: "POP Finish", premium: "False Ceiling (Living)", luxury: "False Ceiling (All Rooms)" },
+  { category: "Finishes", feature: "Main Door", standard: "Teak Frame + Flush Door", premium: "Teak Wood Door", luxury: "Designer Teak Door" },
+  { category: "Kitchen", feature: "Countertop", standard: "Granite", premium: "Quartz", luxury: "Imported Marble" },
+  { category: "Kitchen", feature: "Cabinetry", standard: "Standard Plywood", premium: "Marine Plywood + Laminate", luxury: "Solid Wood + Soft Close" },
+  { category: "Kitchen", feature: "Appliances Included", standard: false, premium: "Chimney + Hob", luxury: "Full Modular Kitchen" },
+  { category: "Kitchen", feature: "Backsplash", standard: "Ceramic Tiles", premium: "Designer Tiles", luxury: "Imported Stone/Glass" },
+  { category: "Bathroom", feature: "Fixtures Brand", standard: "Hindware/Parryware", premium: "Kohler/American Standard", luxury: "Grohe/Duravit" },
+  { category: "Bathroom", feature: "Tiles", standard: "Ceramic (2ft x 2ft)", premium: "Large Format Vitrified", luxury: "Imported Designer Tiles" },
+  { category: "Bathroom", feature: "Fittings", standard: "Chrome Standard", premium: "Chrome Premium", luxury: "Rain Shower + Body Jets" },
+  { category: "Bathroom", feature: "Bathtub", standard: false, premium: false, luxury: true },
+  { category: "Electrical", feature: "Wiring", standard: "Copper (Standard)", premium: "FR Grade Copper", luxury: "FRLS Grade Copper" },
+  { category: "Electrical", feature: "Switches", standard: "Standard Modular", premium: "Premium Modular", luxury: "Touch Panel / Smart" },
+  { category: "Electrical", feature: "Smart Home", standard: false, premium: "Basic (Lights)", luxury: "Full Automation" },
+  { category: "Electrical", feature: "Backup Power", standard: false, premium: "Inverter Ready", luxury: "Full Generator Backup" },
+  { category: "Plumbing", feature: "Pipe Type", standard: "CPVC", premium: "CPVC + Concealed", luxury: "Composite + Concealed" },
+  { category: "Plumbing", feature: "Water Heater", standard: "Geyser Points", premium: "Geyser Included", luxury: "Central Heating System" },
+  { category: "Plumbing", feature: "Water Purifier", standard: false, premium: "RO Point", luxury: "Built-in RO System" },
+  { category: "Extras", feature: "Landscaping", standard: false, premium: "Basic Garden", luxury: "Designer Landscaping" },
+  { category: "Extras", feature: "Parking", standard: "Open Parking", premium: "Covered Parking", luxury: "Basement Parking" },
+  { category: "Extras", feature: "Security System", standard: "Basic CCTV", premium: "CCTV + Video Door", luxury: "Full Security Suite" },
+  { category: "Extras", feature: "Solar Panels", standard: false, premium: false, luxury: true },
+  { category: "Extras", feature: "EV Charging", standard: false, premium: "Provision", luxury: "Installed" },
+];
