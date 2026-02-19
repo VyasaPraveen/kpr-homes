@@ -14,8 +14,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Call Us",
-    value: SITE_CONFIG.phone,
-    href: `tel:${SITE_CONFIG.phone}`,
+    value: `${SITE_CONFIG.phone}\n${SITE_CONFIG.phone2}`,
+    href: `tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`,
   },
   {
     icon: Mail,
@@ -55,12 +55,17 @@ export default function OfficeInfo() {
               <div>
                 <p className="text-gray-400 text-xs mb-1">{info.label}</p>
                 {info.href ? (
-                  <a
-                    href={info.href}
-                    className="text-white hover:text-gold-400 transition-colors text-sm"
-                  >
-                    {info.value}
-                  </a>
+                  <div className="flex flex-col gap-0.5">
+                    {info.value.split("\n").map((line) => (
+                      <a
+                        key={line}
+                        href={`tel:${line.replaceAll(" ", "")}`}
+                        className="text-white hover:text-gold-400 transition-colors text-sm"
+                      >
+                        {line}
+                      </a>
+                    ))}
+                  </div>
                 ) : (
                   <p className="text-white text-sm">{info.value}</p>
                 )}

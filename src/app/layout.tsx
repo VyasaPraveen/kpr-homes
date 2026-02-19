@@ -3,6 +3,7 @@ import { playfairDisplay, inter } from "@/lib/fonts";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/layout/ScrollToTop";
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     "luxury apartments",
     "KPR Homes",
     "building contractor",
-    "Hyderabad",
+    "Tirupati",
   ],
   openGraph: {
     title: "KPR Homes | Premium Construction Contractor",
@@ -43,6 +44,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <ScrollToTop />
+        <WhatsAppButton />
       </body>
     </html>
   );

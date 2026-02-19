@@ -95,8 +95,8 @@ export default function WhyChooseUs() {
           </div>
 
           {/* Right - Floating Cards */}
-          <div className="relative hidden lg:block">
-            <div className="relative h-[500px]">
+          <div className="relative hidden lg:flex items-center justify-center">
+            <div className="relative w-full h-[480px]">
               {floatingCards.map((card, i) => (
                 <motion.div
                   key={card.label}
@@ -108,12 +108,12 @@ export default function WhyChooseUs() {
                     duration: 0.6,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className={`absolute glass-card p-6 ${
+                  className={`absolute glass-card px-8 py-6 ${
                     i === 0
-                      ? "top-0 right-12 rotate-[-3deg]"
+                      ? "top-4 right-8 rotate-[-3deg]"
                       : i === 1
-                      ? "top-1/3 left-0 rotate-[2deg]"
-                      : "bottom-8 right-0 rotate-[-2deg]"
+                      ? "top-[40%] -translate-y-1/2 left-4 rotate-[2deg]"
+                      : "bottom-4 right-4 rotate-[-2deg]"
                   }`}
                   style={{ animation: `float ${6 + i}s ease-in-out infinite` }}
                 >

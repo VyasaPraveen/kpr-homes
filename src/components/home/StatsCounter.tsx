@@ -27,7 +27,7 @@ export default function StatsCounter() {
         />
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
         <StaggerChildren
           staggerDelay={0.1}
           className="grid grid-cols-2 md:grid-cols-4 gap-8"

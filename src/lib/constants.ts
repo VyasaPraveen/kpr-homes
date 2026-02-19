@@ -3,16 +3,17 @@ export const SITE_CONFIG = {
   tagline: "Building Dreams Into Reality",
   description:
     "KPR Homes is a premium construction contractor specializing in commercial and residential projects. Building excellence, delivering trust.",
-  phone: "+91 98765 43210",
-  email: "info@kprhomes.com",
-  address: "123 Builder Avenue, Hyderabad, Telangana 500032",
+  phone: "+91 98493 51276",
+  phone2: "+91 81258 13502",
+  email: "kprprojects.ind@gmail.com",
+  address: "601, KPR Meridian, Revenue Colony, Near Hotel Taj, Beside Vintage INN, Tirupati - 517501",
   workingHours: "Mon - Sat: 9:00 AM - 6:00 PM",
   socialLinks: {
     facebook: "https://facebook.com/kprhomes",
     instagram: "https://instagram.com/kprhomes",
     linkedin: "https://linkedin.com/company/kprhomes",
     youtube: "https://youtube.com/@kprhomes",
-    whatsapp: "https://wa.me/919876543210",
+    whatsapp: "https://wa.me/919849351276",
   },
 };
 

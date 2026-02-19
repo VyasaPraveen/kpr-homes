@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Phone, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export default function CTABanner() {
   return (
@@ -45,7 +46,7 @@ export default function CTABanner() {
                 <ArrowRight className="w-5 h-5" />
               </motion.span>
             </Link>
-            <a href="tel:+919876543210">
+            <a href={`tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`}>
               <motion.span
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

@@ -24,7 +24,7 @@ export const timeline: TimelineEvent[] = [
   {
     year: 2019,
     title: "Pan-India Presence",
-    description: "Expanded operations across 5 major cities including Mumbai, Bangalore, Chennai, Pune, and Hyderabad.",
+    description: "Expanded operations across multiple cities in Andhra Pradesh and neighbouring states, with headquarters in Tirupati.",
   },
   {
     year: 2022,

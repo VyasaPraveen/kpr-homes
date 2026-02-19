@@ -61,7 +61,7 @@ export default function ContactPage() {
               </svg>
             </div>
             <p className="text-navy-900 font-heading font-bold text-lg">KPR Homes Office</p>
-            <p className="text-charcoal-500 text-sm">123 Builder Avenue, Hyderabad</p>
+            <p className="text-charcoal-500 text-sm max-w-xs">601, KPR Meridian, Revenue Colony, Near Hotel Taj, Beside Vintage INN, Tirupati - 517501</p>
           </div>
         </div>
       </section>

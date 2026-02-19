@@ -1,8 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Building2, Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import {
+  Building2,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Send,
+  Loader2,
+  CheckCircle,
+} from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
 
@@ -31,6 +45,75 @@ const socialLinks = [
   { icon: Youtube, href: SITE_CONFIG.socialLinks.youtube, label: "YouTube" },
 ];
 
+function QuickEnquiryForm() {
+  const [formData, setFormData] = useState({ name: "", phone: "", whatsapp: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({ name: "", phone: "", whatsapp: "" });
+    }, 3000);
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className="flex items-center gap-2 text-green-400 py-4">
+        <CheckCircle className="w-5 h-5" />
+        <span className="text-sm">Thank you! We&apos;ll contact you soon.</span>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <input
+        type="text"
+        placeholder="Your Name"
+        value={formData.name}
+        onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+        required
+        className="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-gold-400/50 transition-colors"
+      />
+      <input
+        type="tel"
+        placeholder="Phone Number"
+        value={formData.phone}
+        onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
+        required
+        className="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-gold-400/50 transition-colors"
+      />
+      <input
+        type="tel"
+        placeholder="WhatsApp Number"
+        value={formData.whatsapp}
+        onChange={(e) => setFormData((prev) => ({ ...prev, whatsapp: e.target.value }))}
+        className="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-gold-400/50 transition-colors"
+      />
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-gold text-navy-900 font-semibold text-sm rounded-lg hover:shadow-gold transition-all duration-300 disabled:opacity-70"
+      >
+        {isSubmitting ? (
+          <Loader2 className="w-4 h-4 animate-spin" />
+        ) : (
+          <Send className="w-4 h-4" />
+        )}
+        {isSubmitting ? "Sending..." : "Quick Enquiry"}
+      </motion.button>
+    </form>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="bg-gradient-dark text-white">
@@ -39,7 +122,7 @@ export default function Footer() {
 
       <div className="container-custom section-padding">
         <FadeInWhenVisible>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
             {/* Company Info */}
             <div className="lg:col-span-1">
               <Link href="/" className="flex items-center gap-2 mb-6 group">
@@ -124,10 +207,15 @@ export default function Footer() {
                   <span className="text-gray-400">{SITE_CONFIG.address}</span>
                 </li>
                 <li className="flex gap-3 text-sm">
-                  <Phone className="w-5 h-5 text-gold-400 shrink-0" />
-                  <a href={`tel:${SITE_CONFIG.phone}`} className="text-gray-400 hover:text-white transition-colors">
-                    {SITE_CONFIG.phone}
-                  </a>
+                  <Phone className="w-5 h-5 text-gold-400 shrink-0 mt-0.5" />
+                  <div className="flex flex-col gap-1">
+                    <a href={`tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`} className="text-gray-400 hover:text-white transition-colors">
+                      {SITE_CONFIG.phone}
+                    </a>
+                    <a href={`tel:${SITE_CONFIG.phone2.replaceAll(" ", "")}`} className="text-gray-400 hover:text-white transition-colors">
+                      {SITE_CONFIG.phone2}
+                    </a>
+                  </div>
                 </li>
                 <li className="flex gap-3 text-sm">
                   <Mail className="w-5 h-5 text-gold-400 shrink-0" />
@@ -140,6 +228,14 @@ export default function Footer() {
                   <span className="text-gray-400">{SITE_CONFIG.workingHours}</span>
                 </li>
               </ul>
+            </div>
+
+            {/* Quick Enquiry */}
+            <div>
+              <h3 className="font-heading text-lg font-semibold mb-6 text-gold-400">
+                Quick Enquiry
+              </h3>
+              <QuickEnquiryForm />
             </div>
           </div>
         </FadeInWhenVisible>

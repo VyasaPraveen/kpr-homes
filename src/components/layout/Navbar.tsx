@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone, Building2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navigation } from "@/data/navigation";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,9 +39,9 @@ export default function Navbar() {
             : "bg-transparent py-5"
         )}
       >
-        <div className="container-custom flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
             <div className="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center group-hover:shadow-gold transition-shadow duration-300">
               <Building2 className="w-6 h-6 text-navy-900" />
             </div>
@@ -55,7 +56,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-1">
             {navigation.map((item) => (
               <div
                 key={item.label}
@@ -66,7 +67,7 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 flex items-center gap-1",
+                    "px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 flex items-center gap-1 whitespace-nowrap",
                     pathname === item.href
                       ? "text-gold-400"
                       : "text-white/80 hover:text-white hover:bg-white/10"
@@ -87,7 +88,7 @@ export default function Navbar() {
                 {pathname === item.href && (
                   <motion.div
                     layoutId="navIndicator"
-                    className="absolute -bottom-1 left-4 right-4 h-0.5 bg-gold-400 rounded-full"
+                    className="absolute -bottom-1 left-3 right-3 h-0.5 bg-gold-400 rounded-full"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -124,13 +125,13 @@ export default function Navbar() {
           </nav>
 
           {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4 shrink-0">
             <a
-              href="tel:+919876543210"
-              className="hidden md:flex items-center gap-2 text-white/80 hover:text-gold-400 transition-colors text-sm"
+              href={`tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`}
+              className="hidden xl:flex items-center gap-2 text-white/80 hover:text-gold-400 transition-colors text-[13px]"
             >
               <Phone className="w-4 h-4" />
-              <span>+91 98765 43210</span>
+              <span>{SITE_CONFIG.phone}</span>
             </a>
             <Link
               href="/cost-estimator"
@@ -140,7 +141,7 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+              className="xl:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -157,7 +158,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-40 bg-navy-950 lg:hidden"
+            className="fixed inset-0 z-40 bg-navy-950 xl:hidden"
           >
             <div className="pt-24 px-6 pb-6 h-full overflow-y-auto">
               <nav className="flex flex-col gap-2">
@@ -209,11 +210,11 @@ export default function Navbar() {
                   Get Free Estimate
                 </Link>
                 <a
-                  href="tel:+919876543210"
+                  href={`tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`}
                   className="flex items-center justify-center gap-2 mt-4 text-white/80 hover:text-gold-400 transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>+91 98765 43210</span>
+                  <span>{SITE_CONFIG.phone}</span>
                 </a>
               </div>
             </div>
