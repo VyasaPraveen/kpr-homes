@@ -78,11 +78,13 @@ export default function FeaturedProjects() {
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                       style={{
-                        backgroundImage: `url('https://images.unsplash.com/photo-${
-                          project.category === "commercial"
-                            ? "1486406146926-c627a92ad1ab"
-                            : "1545324418-cc1a3fa10c00"
-                        }?w=600&q=80')`,
+                        backgroundImage: `url('${
+                          project.thumbnail || project.images[0] || (
+                            project.category === "commercial"
+                              ? "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
+                              : "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80"
+                          )
+                        }')`,
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

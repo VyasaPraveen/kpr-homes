@@ -6,11 +6,13 @@ import Link from "next/link";
 import Badge from "@/components/ui/Badge";
 import { Project } from "@/types";
 
+const fallbackImages = {
+  commercial: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
+  residential: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
+};
+
 export default function ProjectCard({ project }: { project: Project }) {
-  const imageUrl =
-    project.category === "commercial"
-      ? "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
-      : "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80";
+  const imageUrl = project.thumbnail || project.images[0] || fallbackImages[project.category];
 
   return (
     <motion.div

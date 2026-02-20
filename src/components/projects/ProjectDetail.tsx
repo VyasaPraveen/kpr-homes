@@ -1,21 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import { MapPin, Calendar, Ruler, Clock, User, ArrowLeft, Check } from "lucide-react";
 import Link from "next/link";
 import Badge from "@/components/ui/Badge";
 import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
 import { Project } from "@/types";
 
+const fallbackImages = {
+  commercial: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+  residential: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80",
+};
+
 export default function ProjectDetail({ project }: { project: Project }) {
-  const imageUrl =
-    project.category === "commercial"
-      ? "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80"
-      : "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80";
+  const heroImage = project.images[0] || fallbackImages[project.category];
+  const [activeImage, setActiveImage] = useState(heroImage);
 
   return (
     <>
       <section className="relative h-[60vh] min-h-[400px]">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${imageUrl}')` }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${heroImage}')` }} />
         <div className="absolute inset-0 bg-gradient-overlay" />
         <div className="absolute inset-0 flex items-end">
           <div className="container-custom pb-12">
@@ -44,6 +48,34 @@ export default function ProjectDetail({ project }: { project: Project }) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               <FadeInWhenVisible>
+                {/* Image Gallery */}
+                {project.images.length > 1 && (
+                  <div className="mb-10">
+                    <div className="relative rounded-2xl overflow-hidden mb-4 aspect-video">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-all duration-500"
+                        style={{ backgroundImage: `url('${activeImage}')` }}
+                      />
+                    </div>
+                    <div className="grid grid-cols-5 gap-3">
+                      {project.images.map((img, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setActiveImage(img)}
+                          className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                            activeImage === img ? "border-gold-400 shadow-gold" : "border-transparent opacity-70 hover:opacity-100"
+                          }`}
+                        >
+                          <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{ backgroundImage: `url('${img}')` }}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <h2 className="font-heading text-2xl font-bold text-navy-900 mb-4">About This Project</h2>
                 <p className="text-charcoal-600 leading-relaxed mb-8">{project.description}</p>
                 <h3 className="font-heading text-xl font-bold text-navy-900 mb-4">Key Features</h3>

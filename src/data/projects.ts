@@ -21,8 +21,11 @@ export const projects: Project[] = [
       "24/7 Security",
       "Power Backup",
     ],
-    images: ["/images/projects/commercial/luckys1-1.jpg"],
-    thumbnail: "/images/projects/commercial/luckys1-thumb.jpg",
+    images: [
+      "/images/projects/commercial/luckys1-1.jpg",
+      "/images/projects/commercial/luckys1-2.jpg",
+    ],
+    thumbnail: "/images/projects/commercial/luckys1-1.jpg",
     duration: "18 months",
   },
   {
@@ -44,8 +47,15 @@ export const projects: Project[] = [
       "Fire Safety Systems",
       "Landscaped Surroundings",
     ],
-    images: ["/images/projects/commercial/luckys2-1.jpg"],
-    thumbnail: "/images/projects/commercial/luckys2-thumb.jpg",
+    images: [
+      "/images/projects/commercial/luckys2-1.jpg",
+      "/images/projects/commercial/luckys2-2.jpg",
+      "/images/projects/commercial/luckys2-3.jpg",
+      "/images/projects/commercial/luckys2-4.jpg",
+      "/images/projects/commercial/luckys2-5.jpg",
+      "/images/projects/commercial/luckys2-6.jpg",
+    ],
+    thumbnail: "/images/projects/commercial/luckys2-1.jpg",
     duration: "20 months",
   },
   // ===== COMMERCIAL - ONGOING =====
@@ -68,8 +78,11 @@ export const projects: Project[] = [
       "Central Air Conditioning",
       "Rainwater Harvesting",
     ],
-    images: ["/images/projects/commercial/kcn-1.jpg"],
-    thumbnail: "/images/projects/commercial/kcn-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=600&q=80",
     duration: "24 months",
   },
   {
@@ -91,8 +104,11 @@ export const projects: Project[] = [
       "Power Backup",
       "24/7 Security",
     ],
-    images: ["/images/projects/commercial/pcr-1.jpg"],
-    thumbnail: "/images/projects/commercial/pcr-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1464938050520-ef2571e0d6e0?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1464938050520-ef2571e0d6e0?w=600&q=80",
     duration: "30 months",
   },
   {
@@ -114,8 +130,11 @@ export const projects: Project[] = [
       "Visitor Parking",
       "Green Building Certified",
     ],
-    images: ["/images/projects/commercial/anandmythri-1.jpg"],
-    thumbnail: "/images/projects/commercial/anandmythri-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
     duration: "36 months",
   },
   // ===== RESIDENTIAL - COMPLETED =====
@@ -138,8 +157,14 @@ export const projects: Project[] = [
       "24/7 Security",
       "Power Backup",
     ],
-    images: ["/images/projects/residential/kpr-pride-1.jpg"],
-    thumbnail: "/images/projects/residential/kpr-pride-thumb.jpg",
+    images: [
+      "/images/projects/residential/kpr-pride-1.jpg",
+      "/images/projects/residential/kpr-pride-2.jpg",
+      "/images/projects/residential/kpr-pride-3.jpg",
+      "/images/projects/residential/kpr-pride-4.jpg",
+      "/images/projects/residential/kpr-pride-5.jpg",
+    ],
+    thumbnail: "/images/projects/residential/kpr-pride-4.jpg",
     duration: "24 months",
   },
   {
@@ -161,8 +186,12 @@ export const projects: Project[] = [
       "Clubhouse",
       "Covered Parking",
     ],
-    images: ["/images/projects/residential/kpr-elite-1.jpg"],
-    thumbnail: "/images/projects/residential/kpr-elite-thumb.jpg",
+    images: [
+      "/images/projects/residential/kpr-elite-1.jpg",
+      "/images/projects/residential/kpr-elite-2.jpg",
+      "/images/projects/residential/kpr-elite-3.jpg",
+    ],
+    thumbnail: "/images/projects/residential/kpr-elite-1.jpg",
     duration: "26 months",
   },
   {
@@ -184,8 +213,14 @@ export const projects: Project[] = [
       "Indoor Games",
       "Rainwater Harvesting",
     ],
-    images: ["/images/projects/residential/kpr-oakridge-1.jpg"],
-    thumbnail: "/images/projects/residential/kpr-oakridge-thumb.jpg",
+    images: [
+      "/images/projects/residential/kpr-oakridge-1.jpg",
+      "/images/projects/residential/kpr-oakridge-2.jpg",
+      "/images/projects/residential/kpr-oakridge-3.jpg",
+      "/images/projects/residential/kpr-oakridge-4.jpg",
+      "/images/projects/residential/kpr-oakridge-5.jpg",
+    ],
+    thumbnail: "/images/projects/residential/kpr-oakridge-1.jpg",
     duration: "28 months",
   },
   {
@@ -207,8 +242,11 @@ export const projects: Project[] = [
       "Smart Home Features",
       "Visitor Parking",
     ],
-    images: ["/images/projects/residential/kpr-meridian-1.jpg"],
-    thumbnail: "/images/projects/residential/kpr-meridian-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=600&q=80",
     duration: "30 months",
   },
   {
@@ -230,8 +268,11 @@ export const projects: Project[] = [
       "Power Backup",
       "CCTV Surveillance",
     ],
-    images: ["/images/projects/residential/mokshitha-enclave-1.jpg"],
-    thumbnail: "/images/projects/residential/mokshitha-enclave-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80",
     duration: "22 months",
   },
   {
@@ -253,8 +294,11 @@ export const projects: Project[] = [
       "Community Hall",
       "24/7 Water Supply",
     ],
-    images: ["/images/projects/residential/mokshitha-towers-1.jpg"],
-    thumbnail: "/images/projects/residential/mokshitha-towers-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=600&q=80",
     duration: "24 months",
   },
   // ===== RESIDENTIAL - ONGOING =====
@@ -277,8 +321,11 @@ export const projects: Project[] = [
       "Clubhouse",
       "Smart Home Automation",
     ],
-    images: ["/images/projects/residential/kpr-exotica-1.jpg"],
-    thumbnail: "/images/projects/residential/kpr-exotica-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80",
     duration: "30 months",
   },
   {
@@ -300,8 +347,11 @@ export const projects: Project[] = [
       "Swimming Pool",
       "Indoor Badminton Court",
     ],
-    images: ["/images/projects/residential/kpr-grandure-1.jpg"],
-    thumbnail: "/images/projects/residential/kpr-grandure-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80",
     duration: "36 months",
   },
   {
@@ -323,8 +373,11 @@ export const projects: Project[] = [
       "Yoga & Meditation Deck",
       "EV Charging Stations",
     ],
-    images: ["/images/projects/residential/kpr-zenith-1.jpg"],
-    thumbnail: "/images/projects/residential/kpr-zenith-thumb.jpg",
+    images: [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+    ],
+    thumbnail:
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80",
     duration: "36 months",
   },
 ];
