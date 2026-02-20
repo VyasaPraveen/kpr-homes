@@ -186,12 +186,8 @@ export const projects: Project[] = [
       "Clubhouse",
       "Covered Parking",
     ],
-    images: [
-      "/images/projects/residential/kpr-elite-1.jpg",
-      "/images/projects/residential/kpr-elite-2.jpg",
-      "/images/projects/residential/kpr-elite-3.jpg",
-    ],
-    thumbnail: "/images/projects/residential/kpr-elite-1.jpg",
+    images: [],
+    thumbnail: "",
     duration: "26 months",
   },
   {
