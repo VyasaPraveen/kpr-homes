@@ -38,9 +38,9 @@ const reasons = [
 ];
 
 const floatingCards = [
-  { label: "Projects", value: 500, suffix: "+", delay: 0 },
+  { label: "Projects", value: 14, suffix: "+", delay: 0 },
   { label: "Satisfaction", value: 98, suffix: "%", delay: 0.2 },
-  { label: "Cities", value: 5, suffix: "+", delay: 0.4 },
+  { label: "Happy Clients", value: 150, suffix: "+", delay: 0.4 },
 ];
 
 export default function WhyChooseUs() {
@@ -105,17 +105,17 @@ export default function WhyChooseUs() {
                   viewport={{ once: true }}
                   transition={{
                     delay: card.delay,
-                    duration: 0.6,
+                    duration: 0.8,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className={`absolute glass-card px-8 py-6 ${
                     i === 0
-                      ? "top-4 right-8 rotate-[-3deg]"
+                      ? "top-0 right-12"
                       : i === 1
-                      ? "top-[40%] -translate-y-1/2 left-4 rotate-[2deg]"
-                      : "bottom-4 right-4 rotate-[-2deg]"
+                      ? "top-1/3 left-0"
+                      : "bottom-8 right-0"
                   }`}
-                  style={{ animation: `float ${6 + i}s ease-in-out infinite` }}
+                  style={{ animation: `slowRotate ${5 + i * 1.5}s ease-in-out infinite ${card.delay}s` }}
                 >
                   <div className="text-3xl font-heading font-bold text-white mb-1">
                     <AnimatedCounter

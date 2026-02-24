@@ -46,7 +46,7 @@ export default function CTABanner() {
                 <ArrowRight className="w-5 h-5" />
               </motion.span>
             </Link>
-            <a href={`tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`}>
+            <a href="tel:+919849351276">
               <motion.span
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

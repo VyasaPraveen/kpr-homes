@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --color-primary: #1a365d;
-    --color-primary-bright: #2563eb;
-    --color-accent: #d4a843;
-    --color-accent-bright: #f0c040;
+    --color-primary: #1B5E7B;
+    --color-primary-bright: #367faa;
+    --color-accent: #d49528;
+    --color-accent-bright: #E8A830;
     --color-background: #ffffff;
     --color-surface: #f8fafc;
     --color-text-primary: #1f2937;
@@ -34,11 +34,11 @@
     background: #f1f5f9;
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #1a365d, #2b4c8f);
+    background: linear-gradient(135deg, #1B5E7B, #245d85);
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #0f1f3a, #1a365d);
+    background: linear-gradient(135deg, #0e2f3d, #1B5E7B);
   }
 }
 
@@ -61,7 +61,7 @@
   .gold-border-bottom::after {
     content: "";
     @apply absolute bottom-0 left-0 w-16 h-1 rounded-full;
-    background: linear-gradient(135deg, #d4a843, #f0c040);
+    background: linear-gradient(135deg, #d49528, #E8A830);
   }
 
   .section-padding {

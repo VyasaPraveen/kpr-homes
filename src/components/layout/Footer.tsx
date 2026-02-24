@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
-  Building2,
   Phone,
   Mail,
   MapPin,
@@ -125,18 +125,14 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
             {/* Company Info */}
             <div className="lg:col-span-1">
-              <Link href="/" className="flex items-center gap-2 mb-6 group">
-                <div className="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center">
-                  <Building2 className="w-6 h-6 text-navy-900" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-heading font-bold text-white leading-tight">
-                    KPR Homes
-                  </span>
-                  <span className="text-[10px] text-gold-400 tracking-[0.2em] uppercase leading-tight">
-                    Building Dreams
-                  </span>
-                </div>
+              <Link href="/" className="inline-block mb-6 group">
+                <Image
+                  src="/images/logo.png"
+                  alt="KPR Homes - We create landmarks"
+                  width={160}
+                  height={56}
+                  className="h-12 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity duration-300"
+                />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
                 {SITE_CONFIG.description}
@@ -209,10 +205,10 @@ export default function Footer() {
                 <li className="flex gap-3 text-sm">
                   <Phone className="w-5 h-5 text-gold-400 shrink-0 mt-0.5" />
                   <div className="flex flex-col gap-1">
-                    <a href={`tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`} className="text-gray-400 hover:text-white transition-colors">
+                    <a href={`tel:${SITE_CONFIG.phone}`} className="text-gray-400 hover:text-white transition-colors">
                       {SITE_CONFIG.phone}
                     </a>
-                    <a href={`tel:${SITE_CONFIG.phone2.replaceAll(" ", "")}`} className="text-gray-400 hover:text-white transition-colors">
+                    <a href={`tel:${SITE_CONFIG.phone2}`} className="text-gray-400 hover:text-white transition-colors">
                       {SITE_CONFIG.phone2}
                     </a>
                   </div>

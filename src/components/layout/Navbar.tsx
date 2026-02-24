@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Phone, Building2 } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navigation } from "@/data/navigation";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -41,22 +42,19 @@ export default function Navbar() {
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center group-hover:shadow-gold transition-shadow duration-300">
-              <Building2 className="w-6 h-6 text-navy-900" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-heading font-bold text-white leading-tight">
-                KPR Homes
-              </span>
-              <span className="text-[10px] text-gold-400 tracking-[0.2em] uppercase leading-tight">
-                Building Dreams
-              </span>
-            </div>
+          <Link href="/" className="flex-shrink-0 flex items-center group">
+            <Image
+              src="/images/logo.png"
+              alt="KPR Homes - We create landmarks"
+              width={140}
+              height={48}
+              className="h-10 w-auto brightness-0 invert group-hover:opacity-90 transition-opacity duration-300"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5 mx-4">
             {navigation.map((item) => (
               <div
                 key={item.label}
@@ -125,17 +123,17 @@ export default function Navbar() {
           </nav>
 
           {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-4 shrink-0">
+          <div className="flex-shrink-0 flex items-center gap-4">
             <a
-              href={`tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`}
-              className="hidden xl:flex items-center gap-2 text-white/80 hover:text-gold-400 transition-colors text-[13px]"
+              href="tel:+919849351276"
+              className="hidden lg:flex items-center gap-2 text-white/80 hover:text-gold-400 transition-colors text-sm whitespace-nowrap"
             >
               <Phone className="w-4 h-4" />
-              <span>{SITE_CONFIG.phone}</span>
+              <span>+91 98493 51276</span>
             </a>
             <Link
               href="/cost-estimator"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-gold text-navy-900 font-semibold text-sm rounded-lg hover:shadow-gold-lg transition-all duration-300"
+              className="hidden sm:inline-flex items-center px-5 py-2.5 bg-gradient-gold text-navy-900 font-semibold text-sm rounded-lg hover:shadow-gold-lg transition-all duration-300 whitespace-nowrap"
             >
               Get Estimate
             </Link>
@@ -210,11 +208,11 @@ export default function Navbar() {
                   Get Free Estimate
                 </Link>
                 <a
-                  href={`tel:${SITE_CONFIG.phone.replaceAll(" ", "")}`}
+                  href="tel:+919849351276"
                   className="flex items-center justify-center gap-2 mt-4 text-white/80 hover:text-gold-400 transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>{SITE_CONFIG.phone}</span>
+                  <span>+91 98493 51276</span>
                 </a>
               </div>
             </div>

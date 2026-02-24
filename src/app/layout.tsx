@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { playfairDisplay, inter } from "@/lib/fonts";
+import { poppins, inter } from "@/lib/fonts";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/layout/ScrollToTop";
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "KPR Homes | Premium Construction Contractor",
     description:
-      "Building Dreams Into Reality. Premium commercial and residential construction services.",
+      "We create landmarks. Premium commercial and residential construction services.",
     type: "website",
     locale: "en_IN",
     siteName: "KPR Homes",
@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body className="font-body antialiased">
         <Navbar />
         <main>{children}</main>

@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   name: "KPR Homes",
-  tagline: "Building Dreams Into Reality",
+  tagline: "We create landmarks..",
   description:
     "KPR Homes is a premium construction contractor specializing in commercial and residential projects. Building excellence, delivering trust.",
   phone: "+91 98493 51276",

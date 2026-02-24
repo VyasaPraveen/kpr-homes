@@ -1,15 +1,15 @@
 "use client";
 
-import { Building2, CheckCircle, Users, Award } from "lucide-react";
+import { Users, SmilePlus, CheckCircle, Loader } from "lucide-react";
 import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import StaggerChildren from "@/components/animations/StaggerChildren";
 import { motion } from "framer-motion";
 
 const stats = [
-  { icon: Building2, value: 15, suffix: "+", label: "Years Experience" },
-  { icon: CheckCircle, value: 500, suffix: "+", label: "Projects Completed" },
-  { icon: Users, value: 200, suffix: "+", label: "Happy Clients" },
-  { icon: Award, value: 50, suffix: "+", label: "Awards Won" },
+  { icon: Users, value: 20, suffix: "+", label: "Expert Team" },
+  { icon: SmilePlus, value: 150, suffix: "+", label: "Happy Clients" },
+  { icon: CheckCircle, value: 14, suffix: "+", label: "Completed Projects" },
+  { icon: Loader, value: 9, suffix: "+", label: "Running Projects" },
 ];
 
 export default function StatsCounter() {

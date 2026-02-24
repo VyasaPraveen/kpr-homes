@@ -1,6 +1,6 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 
-export const playfairDisplay = Playfair_Display({
+export const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-heading",
