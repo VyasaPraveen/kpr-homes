@@ -7,8 +7,8 @@ export const navigation: NavItem[] = [
     label: "Projects",
     href: "/projects",
     children: [
-      { label: "Commercial", href: "/projects/commercial" },
-      { label: "Residential", href: "/projects/residential" },
+      { label: "Commercial Buildings", href: "/projects/commercial" },
+      { label: "Residential Apartments", href: "/projects/residential" },
     ],
   },
   { label: "Cost Estimator", href: "/cost-estimator" },

@@ -3,9 +3,14 @@ import TestimonialsHero from "@/components/testimonials/TestimonialsHero";
 import TestimonialGrid from "@/components/testimonials/TestimonialGrid";
 
 export const metadata: Metadata = {
-  title: "Testimonials",
+  title: "Client Testimonials & Reviews",
   description:
-    "Read what our clients say about KPR Homes. Real reviews from real clients.",
+    "Read genuine reviews from 200+ happy KPR Homes clients. See why we are Tirupati's most trusted construction company for apartments and commercial buildings.",
+  keywords: ["KPR Homes reviews", "construction company reviews Tirupati", "KPR Homes testimonials", "client feedback", "trusted builder Tirupati"],
+  openGraph: {
+    title: "KPR Homes Client Testimonials - 200+ Happy Clients",
+    description: "Real reviews from real clients. Discover why KPR Homes is Tirupati's most trusted construction company.",
+  },
 };
 
 export default function TestimonialsPage() {

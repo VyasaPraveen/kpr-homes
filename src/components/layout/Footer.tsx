@@ -19,12 +19,13 @@ import {
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
+import VisitorCounter from "@/components/layout/VisitorCounter";
 
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Commercial Projects", href: "/projects/commercial" },
-  { label: "Residential Projects", href: "/projects/residential" },
+  { label: "Commercial Buildings", href: "/projects/commercial" },
+  { label: "Residential Apartments", href: "/projects/residential" },
   { label: "Cost Estimator", href: "/cost-estimator" },
   { label: "Compare Packages", href: "/compare-packages" },
 ];
@@ -125,13 +126,13 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
             {/* Company Info */}
             <div className="lg:col-span-1">
-              <Link href="/" className="inline-block mb-6 group">
+              <Link href="/" className="flex items-center mb-6 group">
                 <Image
                   src="/images/logo.png"
                   alt="KPR Homes - We create landmarks"
-                  width={160}
-                  height={56}
-                  className="h-12 w-auto brightness-0 invert group-hover:opacity-80 transition-opacity duration-300"
+                  width={140}
+                  height={42}
+                  className="h-10 w-auto object-contain brightness-0 invert group-hover:opacity-90 transition-opacity"
                 />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
@@ -251,6 +252,13 @@ export default function Footer() {
               Terms of Service
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Visitor Counter */}
+      <div className="border-t border-white/5 py-4">
+        <div className="container-custom">
+          <VisitorCounter />
         </div>
       </div>
     </footer>

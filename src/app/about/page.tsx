@@ -6,9 +6,14 @@ import TeamGrid from "@/components/about/TeamGrid";
 import Certifications from "@/components/about/Certifications";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us - Our Story & Mission",
   description:
-    "Learn about KPR Homes - our story, mission, team, and journey of building excellence since 2008.",
+    "Learn about KPR Homes - Tirupati's trusted construction company since 2008. 15+ years of experience, 500+ projects, 200+ happy clients. Meet our team.",
+  keywords: ["about KPR Homes", "construction company history", "Tirupati builders", "KPR Homes team", "building contractor Tirupati"],
+  openGraph: {
+    title: "About KPR Homes - Building Excellence Since 2008",
+    description: "15+ years of experience building premium commercial and residential projects in Tirupati. 500+ projects delivered.",
+  },
 };
 
 export default function AboutPage() {

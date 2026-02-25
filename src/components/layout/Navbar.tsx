@@ -42,15 +42,20 @@ export default function Navbar() {
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center group">
-            <Image
-              src="/images/logo.png"
-              alt="KPR Homes - We create landmarks"
-              width={140}
-              height={48}
-              className="h-10 w-auto brightness-0 invert group-hover:opacity-90 transition-opacity duration-300"
-              priority
-            />
+          <Link href="/" className="flex items-center group shrink-0">
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Image
+                src="/images/logo.png"
+                alt="KPR Homes - We create landmarks"
+                width={160}
+                height={48}
+                className="h-12 w-auto object-contain"
+                priority
+              />
+            </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -65,7 +70,7 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 flex items-center gap-1 whitespace-nowrap",
+                    "relative px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 flex items-center gap-1 whitespace-nowrap group/navlink",
                     pathname === item.href
                       ? "text-gold-400"
                       : "text-white/80 hover:text-white hover:bg-white/10"
@@ -79,6 +84,9 @@ export default function Navbar() {
                         activeDropdown === item.label && "rotate-180"
                       )}
                     />
+                  )}
+                  {pathname !== item.href && (
+                    <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-gold-400 rounded-full origin-left scale-x-0 group-hover/navlink:scale-x-100 transition-transform duration-300" />
                   )}
                 </Link>
 

@@ -1,20 +1,30 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown, Play } from "lucide-react";
 import Link from "next/link";
 import TextReveal from "@/components/animations/TextReveal";
 
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with gradient overlay */}
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background with gradient overlay + parallax */}
       <div className="absolute inset-0">
-        <div
+        <motion.div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage:
               "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80')",
+            y: backgroundY,
           }}
         />
         <div className="absolute inset-0 bg-gradient-overlay" />
@@ -53,7 +63,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 w-full text-center">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 w-full text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -115,7 +125,7 @@ export default function HeroSection() {
             </motion.span>
           </Link>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div

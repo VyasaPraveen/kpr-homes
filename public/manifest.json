@@ -1,0 +1,16 @@
+{
+  "name": "KPR Homes - Premium Construction Contractor",
+  "short_name": "KPR Homes",
+  "description": "Premium construction contractor in Tirupati specializing in commercial buildings and residential apartments since 2008.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1729",
+  "theme_color": "#1a2744",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

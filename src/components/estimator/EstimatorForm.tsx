@@ -11,9 +11,11 @@ import {
   Crown,
   Star,
   Check,
+  MessageCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { formatCurrency } from "@/lib/utils";
+import { SITE_CONFIG } from "@/lib/constants";
 import {
   BASE_RATES,
   CONSTRUCTION_TYPES,
@@ -159,36 +161,49 @@ export default function EstimatorForm() {
                 What type of property are you planning to build?
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg mx-auto">
-                {[
-                  { id: "residential" as const, icon: Home, label: "Residential", desc: "Homes, apartments, villas" },
-                  { id: "commercial" as const, icon: Building2, label: "Commercial", desc: "Offices, shops, complexes" },
-                ].map((type) => (
-                  <motion.button
-                    key={type.id}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setPropertyType(type.id)}
+                {/* Residential Button */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setPropertyType("residential")}
+                  className={cn(
+                    "p-8 rounded-2xl border-2 transition-all duration-300 text-center",
+                    propertyType === "residential"
+                      ? "border-gold-400 bg-gold-50 shadow-gold"
+                      : "border-charcoal-200 bg-white hover:border-navy-200"
+                  )}
+                >
+                  <Home
                     className={cn(
-                      "p-8 rounded-2xl border-2 transition-all duration-300 text-center",
-                      propertyType === type.id
-                        ? "border-gold-400 bg-gold-50 shadow-gold"
-                        : "border-charcoal-200 bg-white hover:border-navy-200"
+                      "w-12 h-12 mx-auto mb-4",
+                      propertyType === "residential" ? "text-gold-600" : "text-charcoal-400"
                     )}
-                  >
-                    <type.icon
-                      className={cn(
-                        "w-12 h-12 mx-auto mb-4",
-                        propertyType === type.id
-                          ? "text-gold-600"
-                          : "text-charcoal-400"
-                      )}
-                    />
-                    <h4 className="font-heading text-lg font-bold text-navy-900 mb-1">
-                      {type.label}
-                    </h4>
-                    <p className="text-charcoal-500 text-sm">{type.desc}</p>
-                  </motion.button>
-                ))}
+                  />
+                  <h4 className="font-heading text-lg font-bold text-navy-900 mb-1">
+                    Residential
+                  </h4>
+                  <p className="text-charcoal-500 text-sm">Homes, apartments, villas</p>
+                </motion.button>
+
+                {/* Commercial Button - Redirects to WhatsApp */}
+                <motion.a
+                  href={`${SITE_CONFIG.socialLinks.whatsapp}?text=${encodeURIComponent("Hi KPR Homes, I'm interested in commercial construction. Please share the details and pricing.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="p-8 rounded-2xl border-2 border-charcoal-200 bg-white hover:border-green-400 hover:bg-green-50 transition-all duration-300 text-center cursor-pointer"
+                >
+                  <Building2 className="w-12 h-12 mx-auto mb-4 text-charcoal-400" />
+                  <h4 className="font-heading text-lg font-bold text-navy-900 mb-1">
+                    Commercial
+                  </h4>
+                  <p className="text-charcoal-500 text-sm mb-3">Offices, shops, complexes</p>
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-green-500 text-white text-xs font-semibold rounded-full">
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    Chat on WhatsApp
+                  </span>
+                </motion.a>
               </div>
             </div>
           )}

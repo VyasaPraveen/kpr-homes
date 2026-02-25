@@ -76,7 +76,7 @@ export default function FeaturedProjects() {
                   {/* Image */}
                   <div className="relative h-64 overflow-hidden">
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                      className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-110 group-hover:brightness-105"
                       style={{
                         backgroundImage: `url('${
                           project.thumbnail || project.images[0] || (

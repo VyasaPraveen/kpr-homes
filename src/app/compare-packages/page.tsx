@@ -4,9 +4,14 @@ import ComparisonMatrix from "@/components/compare/ComparisonMatrix";
 import PricingTier from "@/components/compare/PricingTier";
 
 export const metadata: Metadata = {
-  title: "Compare Packages",
+  title: "Compare Construction Packages - Standard, Premium & Luxury",
   description:
-    "Compare our Standard, Premium, and Luxury construction packages. Find the perfect plan for your project.",
+    "Compare KPR Homes construction packages - Standard, Premium, and Luxury. Transparent pricing with detailed feature comparison for residential and commercial projects in Tirupati.",
+  keywords: ["construction packages Tirupati", "building cost comparison", "standard premium luxury construction", "KPR Homes pricing", "construction rates Tirupati"],
+  openGraph: {
+    title: "Compare KPR Homes Construction Packages",
+    description: "Standard, Premium & Luxury construction packages. Transparent pricing for residential and commercial projects.",
+  },
 };
 
 export default function ComparePackagesPage() {

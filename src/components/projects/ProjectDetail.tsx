@@ -28,7 +28,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-4 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to {project.category === "commercial" ? "Commercial" : "Residential"} Projects
+              Back to {project.category === "commercial" ? "Commercial Buildings" : "Residential Apartments"}
             </Link>
             <Badge variant={project.status === "completed" ? "completed" : "ongoing"} className="mb-4 block w-fit">
               {project.status === "completed" ? "Completed" : "Ongoing"}

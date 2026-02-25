@@ -17,16 +17,17 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.4 }}
+      whileHover={{ y: -6, transition: { duration: 0.3 } }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
       <Link href={`/projects/${project.slug}`}>
         <div className="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500">
           <div className="relative h-56 overflow-hidden">
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+              className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-110 group-hover:brightness-105"
               style={{ backgroundImage: `url('${imageUrl}')` }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent" />

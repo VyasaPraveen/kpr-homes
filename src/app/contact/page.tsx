@@ -3,9 +3,14 @@ import ContactForm from "@/components/contact/ContactForm";
 import OfficeInfo from "@/components/contact/OfficeInfo";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us - Get a Free Quote",
   description:
-    "Get in touch with KPR Homes. Contact us for inquiries about residential and commercial construction projects.",
+    "Contact KPR Homes for residential apartments and commercial buildings in Tirupati. Call +91 98493 51276 or visit our office at Revenue Colony, Tirupati.",
+  keywords: ["contact KPR Homes", "construction enquiry Tirupati", "building contractor contact", "KPR Homes phone number", "KPR Homes address"],
+  openGraph: {
+    title: "Contact KPR Homes - Free Construction Consultation",
+    description: "Get in touch for residential and commercial construction projects. Call +91 98493 51276.",
+  },
 };
 
 export default function ContactPage() {

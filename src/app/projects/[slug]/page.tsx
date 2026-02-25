@@ -14,7 +14,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const project = getProjectBySlug(params.slug);
   if (!project) return {};
-  return { title: project.title, description: project.description };
+  const categoryLabel = project.category === "commercial" ? "Commercial Building" : "Residential Apartment";
+  return {
+    title: `${project.title} - ${categoryLabel} in ${project.location}`,
+    description: `${project.description} Located in ${project.location}, ${project.area}. ${project.status === "completed" ? "Completed" : "Ongoing"} project by KPR Homes.`,
+    keywords: [project.title, `${project.location} construction`, `KPR Homes ${project.title}`, `${categoryLabel} ${project.location}`],
+    openGraph: {
+      title: `${project.title} - ${categoryLabel} by KPR Homes`,
+      description: project.description,
+    },
+  };
 }
 
 export default function ProjectDetailPage({

@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { label: "Commercial", href: "/projects/commercial" },
-  { label: "Residential", href: "/projects/residential" },
+  { label: "Commercial Buildings", href: "/projects/commercial" },
+  { label: "Residential Apartments", href: "/projects/residential" },
 ];
 
 export default function ProjectHero({ title, subtitle }: { title: string; subtitle: string }) {

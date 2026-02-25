@@ -1,7 +1,7 @@
 import { EstimatorOption } from "@/types";
 
 export const BASE_RATES = {
-  residential: { standard: 1800, premium: 2800, luxury: 4500 },
+  residential: { standard: 4100, premium: 4900, luxury: 5800 },
   commercial: { standard: 2200, premium: 3500, luxury: 5500 },
 } as const;
 
