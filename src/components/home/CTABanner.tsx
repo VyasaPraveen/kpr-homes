@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Phone, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
-import { SITE_CONFIG } from "@/lib/constants";
 
 export default function CTABanner() {
   return (

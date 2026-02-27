@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navigation } from "@/data/navigation";
-import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,7 +72,7 @@ export default function Navbar() {
                     "relative px-3 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 flex items-center gap-1 whitespace-nowrap group/navlink",
                     pathname === item.href
                       ? "text-gold-400"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
+                      : "text-white hover:text-white hover:bg-white/10"
                   )}
                 >
                   {item.label}
@@ -134,7 +133,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center gap-4">
             <a
               href="tel:+919849351276"
-              className="hidden lg:flex items-center gap-2 text-white/80 hover:text-gold-400 transition-colors text-sm whitespace-nowrap"
+              className="hidden lg:flex items-center gap-2 text-white hover:text-gold-400 transition-colors text-sm whitespace-nowrap"
             >
               <Phone className="w-4 h-4" />
               <span>+91 98493 51276</span>
@@ -181,7 +180,7 @@ export default function Navbar() {
                         "block px-4 py-3 text-lg font-medium rounded-lg transition-all duration-200",
                         pathname === item.href
                           ? "text-gold-400 bg-white/5"
-                          : "text-white/80 hover:text-white hover:bg-white/5"
+                          : "text-white hover:text-white hover:bg-white/5"
                       )}
                     >
                       {item.label}
@@ -196,7 +195,7 @@ export default function Navbar() {
                               "block px-4 py-2 text-sm rounded-lg transition-all duration-200",
                               pathname === child.href
                                 ? "text-gold-400"
-                                : "text-white/60 hover:text-white/90"
+                                : "text-white hover:text-white"
                             )}
                           >
                             {child.label}
@@ -217,7 +216,7 @@ export default function Navbar() {
                 </Link>
                 <a
                   href="tel:+919849351276"
-                  className="flex items-center justify-center gap-2 mt-4 text-white/80 hover:text-gold-400 transition-colors"
+                  className="flex items-center justify-center gap-2 mt-4 text-white hover:text-gold-400 transition-colors"
                 >
                   <Phone className="w-4 h-4" />
                   <span>+91 98493 51276</span>
