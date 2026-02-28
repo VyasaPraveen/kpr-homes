@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
 import OfficeInfo from "@/components/contact/OfficeInfo";
+import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "Contact Us - Get a Free Quote",
@@ -17,29 +18,11 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-16 bg-gradient-navy overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-        </div>
-        <div className="container-custom relative z-10 text-center">
-          <p className="text-gold-400 font-medium text-sm tracking-widest uppercase mb-4">
-            Get In Touch
-          </p>
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Contact Us
-          </h1>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Have a project in mind? We&apos;d love to hear from you.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="Get In Touch"
+        title="Contact Us"
+        subtitle="Have a project in mind? We'd love to hear from you."
+      />
 
       {/* Contact Content */}
       <section className="section-padding bg-white">

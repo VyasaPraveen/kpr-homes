@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ComparisonMatrix from "@/components/compare/ComparisonMatrix";
 import PricingTier from "@/components/compare/PricingTier";
+import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
   title: "Compare Construction Packages - Standard, Premium & Luxury",
@@ -18,29 +19,11 @@ export default function ComparePackagesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-16 bg-gradient-navy overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-        </div>
-        <div className="container-custom relative z-10 text-center">
-          <p className="text-gold-400 font-medium text-sm tracking-widest uppercase mb-4">
-            Transparent Pricing
-          </p>
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Compare Packages
-          </h1>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Find the perfect construction package that fits your needs and budget
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="Transparent Pricing"
+        title="Compare Packages"
+        subtitle="Find the perfect construction package that fits your needs and budget"
+      />
 
       {/* Pricing Tiers */}
       <section className="section-padding bg-charcoal-50">

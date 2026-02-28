@@ -3,31 +3,18 @@
 import { motion } from "framer-motion";
 import { Gift } from "lucide-react";
 import AnimatedCounter from "@/components/animations/AnimatedCounter";
+import PageHero from "@/components/ui/PageHero";
 
 export default function ReferralHero() {
   return (
-    <section className="relative pt-32 pb-20 bg-gradient-navy overflow-hidden">
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-gold-400/30 rounded-full"
-            style={{ left: `${15 + i * 15}%`, top: `${20 + (i % 3) * 25}%` }}
-            animate={{
-              y: [-20, 20, -20],
-              opacity: [0.2, 0.6, 0.2],
-            }}
-            transition={{
-              duration: 3 + i * 0.5,
-              repeat: Infinity,
-              delay: i * 0.3,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="container-custom relative z-10 text-center">
+    <PageHero
+      label=""
+      title=""
+      subtitle=""
+      paddingBottom="pb-20"
+    >
+      {/* Override default content with custom layout */}
+      <div className="-mt-4">
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -65,6 +52,6 @@ export default function ReferralHero() {
           ))}
         </div>
       </div>
-    </section>
+    </PageHero>
   );
 }

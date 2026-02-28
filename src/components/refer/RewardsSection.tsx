@@ -1,17 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Percent, Paintbrush, Banknote, Crown } from "lucide-react";
+import { Paintbrush, Banknote, Crown } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StaggerChildren from "@/components/animations/StaggerChildren";
 
 const rewards = [
-  {
-    icon: Percent,
-    title: "5% Discount",
-    description: "Get 5% off on your next project with KPR Homes",
-    color: "bg-blue-50 border-blue-200",
-  },
   {
     icon: Paintbrush,
     title: "Free Consultation",
@@ -43,7 +37,7 @@ export default function RewardsSection() {
 
         <StaggerChildren
           staggerDelay={0.1}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {rewards.map((reward) => (
             <motion.div
