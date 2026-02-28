@@ -51,7 +51,7 @@ export default function Navbar() {
                 alt="KPR Homes - We create landmarks"
                 width={160}
                 height={48}
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain brightness-0 invert"
                 priority
               />
             </motion.div>
