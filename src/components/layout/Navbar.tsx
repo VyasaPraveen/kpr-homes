@@ -45,6 +45,7 @@ export default function Navbar() {
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
+              className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5"
             >
               <Image
                 src="/images/logo.png"

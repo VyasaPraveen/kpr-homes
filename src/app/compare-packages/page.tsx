@@ -5,13 +5,35 @@ import PricingTier from "@/components/compare/PricingTier";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title: "Compare Construction Packages - Standard, Premium & Luxury",
+  title: "Compare Construction Packages - Standard, Premium & Luxury in Tirupati",
   description:
-    "Compare KPR Homes construction packages - Standard, Premium, and Luxury. Transparent pricing with detailed feature comparison for residential and commercial projects in Tirupati.",
-  keywords: ["construction packages Tirupati", "building cost comparison", "standard premium luxury construction", "KPR Homes pricing", "construction rates Tirupati"],
+    "Compare KPR Homes construction packages - Standard, Premium, and Luxury. Transparent pricing with detailed feature comparison for residential apartments and commercial buildings in Tirupati, Andhra Pradesh.",
+  keywords: [
+    "construction packages Tirupati",
+    "building cost comparison Tirupati",
+    "standard premium luxury construction",
+    "KPR Homes pricing",
+    "construction rates Tirupati",
+    "building packages Andhra Pradesh",
+    "apartment construction cost Tirupati",
+    "commercial building packages Tirupati",
+    "affordable construction Tirupati",
+    "KPR Homes construction plans",
+  ],
+  alternates: {
+    canonical: "https://kprhomes.in/compare-packages",
+  },
   openGraph: {
-    title: "Compare KPR Homes Construction Packages",
-    description: "Standard, Premium & Luxury construction packages. Transparent pricing for residential and commercial projects.",
+    title: "Compare KPR Homes Construction Packages - Tirupati",
+    description:
+      "Standard, Premium & Luxury construction packages with transparent pricing for residential and commercial projects in Tirupati.",
+    url: "https://kprhomes.in/compare-packages",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Compare Construction Packages - KPR Homes Tirupati",
+    description:
+      "Standard, Premium & Luxury packages. Transparent pricing for apartments and commercial buildings in Tirupati.",
   },
 };
 

@@ -3,13 +3,30 @@ import PageHero from "@/components/ui/PageHero";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
+  title: "Terms of Service - KPR Homes Tirupati",
   description:
-    "Terms of Service for KPR Homes. Read the terms and conditions governing the use of our website and services.",
+    "Terms of Service for KPR Homes, Tirupati's trusted construction company. Read the terms and conditions governing the use of our website kprhomes.in and our construction services.",
+  keywords: [
+    "KPR Homes terms of service",
+    "terms and conditions construction company",
+    "KPR Homes legal terms",
+    "kprhomes.in terms",
+    "builder terms of service Tirupati",
+  ],
+  alternates: {
+    canonical: "https://kprhomes.in/terms",
+  },
   openGraph: {
-    title: "Terms of Service - KPR Homes",
+    title: "Terms of Service - KPR Homes Tirupati",
     description:
       "Terms of Service for KPR Homes. Read the terms and conditions governing the use of our website and services.",
+    url: "https://kprhomes.in/terms",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms of Service - KPR Homes Tirupati",
+    description:
+      "Terms of Service for KPR Homes, Tirupati's leading construction company.",
   },
 };
 

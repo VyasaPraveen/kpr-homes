@@ -3,13 +3,30 @@ import PageHero from "@/components/ui/PageHero";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy - KPR Homes Tirupati",
   description:
-    "Privacy Policy for KPR Homes. Learn how we collect, use, and protect your personal information.",
+    "Privacy Policy for KPR Homes, Tirupati's trusted construction company. Learn how we collect, use, and protect your personal information when you use our website kprhomes.in.",
+  keywords: [
+    "KPR Homes privacy policy",
+    "privacy policy construction company",
+    "KPR Homes data protection",
+    "kprhomes.in privacy",
+    "builder privacy policy Tirupati",
+  ],
+  alternates: {
+    canonical: "https://kprhomes.in/privacy",
+  },
   openGraph: {
-    title: "Privacy Policy - KPR Homes",
+    title: "Privacy Policy - KPR Homes Tirupati",
     description:
       "Privacy Policy for KPR Homes. Learn how we collect, use, and protect your personal information.",
+    url: "https://kprhomes.in/privacy",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy - KPR Homes Tirupati",
+    description:
+      "Privacy Policy for KPR Homes, Tirupati's leading construction company.",
   },
 };
 
