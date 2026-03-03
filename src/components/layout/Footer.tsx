@@ -26,6 +26,8 @@ const quickLinks = [
   { label: "Residential Apartments", href: "/projects/residential" },
   { label: "Cost Estimator", href: "/cost-estimator" },
   { label: "Compare Packages", href: "/compare-packages" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "Refer a Friend", href: "/refer" },
 ];
 
 const serviceLinks = [
@@ -103,7 +105,7 @@ export default function Footer() {
                   alt="KPR Homes - We create landmarks"
                   width={140}
                   height={42}
-                  className="h-10 w-auto object-contain brightness-0 invert group-hover:opacity-90 transition-opacity"
+                  className="h-10 w-auto object-contain group-hover:opacity-90 transition-opacity"
                 />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import ProjectHero from "@/components/projects/ProjectHero";
 import ProjectGrid from "@/components/projects/ProjectGrid";
+import ProjectQuickNav from "@/components/projects/ProjectQuickNav";
 import { getProjectsByCategory } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function ResidentialPage() {
         title="Residential Apartments"
         subtitle="Premium living spaces designed for modern lifestyles"
       />
+      <ProjectQuickNav />
       <ProjectGrid projects={projects} />
     </>
   );

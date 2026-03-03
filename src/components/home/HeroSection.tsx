@@ -79,11 +79,7 @@ export default function HeroSection() {
 
         {/* Heading */}
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
-          <TextReveal text="We Create" delay={0.4} />
-          <br />
-          <span className="text-gradient-gold">
-            <TextReveal text="Landmarks" delay={0.8} />
-          </span>
+          <TextReveal text="We Create Landmarks" delay={0.4} />
         </h1>
 
         {/* Subheading */}
