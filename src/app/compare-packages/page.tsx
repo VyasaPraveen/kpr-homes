@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
-import ComparisonMatrix from "@/components/compare/ComparisonMatrix";
-import PricingTier from "@/components/compare/PricingTier";
+import PackageSelector from "@/components/compare/PackageSelector";
+import PackageFAQ from "@/components/compare/PackageFAQ";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
@@ -44,30 +44,28 @@ export default function ComparePackagesPage() {
       <PageHero
         label="Transparent Pricing"
         title="Compare Packages"
-        subtitle="Find the perfect construction package that fits your needs and budget"
+        subtitle="Select any two packages to compare features side by side and find the perfect fit for your project"
       />
 
-      {/* Pricing Tiers */}
-      <section className="section-padding bg-charcoal-50">
-        <div className="container-custom">
-          <SectionHeading
-            title="Choose Your Package"
-            subtitle="Three carefully crafted packages to suit every need"
-          />
-          <PricingTier />
-        </div>
-      </section>
-
-      {/* Comparison Matrix */}
+      {/* Interactive Package Comparison */}
       <section className="section-padding bg-white">
         <div className="container-custom">
           <SectionHeading
-            title="Detailed Comparison"
-            subtitle="A comprehensive feature-by-feature comparison of all packages"
+            title="Compare Side by Side"
+            subtitle="Pick any two packages to see a detailed feature-by-feature comparison"
           />
-          <div className="bg-white rounded-2xl shadow-card overflow-hidden border border-charcoal-100">
-            <ComparisonMatrix />
-          </div>
+          <PackageSelector />
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="section-padding bg-charcoal-50">
+        <div className="container-custom">
+          <SectionHeading
+            title="Frequently Asked Questions"
+            subtitle="Everything you need to know about our construction packages"
+          />
+          <PackageFAQ />
         </div>
       </section>
 
