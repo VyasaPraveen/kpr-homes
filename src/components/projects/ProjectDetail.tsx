@@ -7,13 +7,13 @@ import Badge from "@/components/ui/Badge";
 import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
 import { Project } from "@/types";
 
-const fallbackImages = {
-  commercial: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
-  residential: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80",
+const fallbackImages: Record<string, string> = {
+  commercial: "/images/projects/placeholder.jpg",
+  residential: "/images/projects/placeholder.jpg",
 };
 
 export default function ProjectDetail({ project }: { project: Project }) {
-  const heroImage = project.images[0] || fallbackImages[project.category];
+  const heroImage = project.images?.[0] || fallbackImages[project.category] || fallbackImages.residential;
   const [activeImage, setActiveImage] = useState(heroImage);
 
   return (
@@ -28,7 +28,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-4 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to {project.category === "commercial" ? "Commercial Buildings" : "Residential Apartments"}
+              Back to {project.category === "commercial" ? "Construction Contracts" : "Residential Projects"}
             </Link>
             <Badge variant={project.status === "completed" ? "completed" : "ongoing"} className="mb-4 block w-fit">
               {project.status === "completed" ? "Completed" : "Ongoing"}
@@ -36,7 +36,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
             <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-2">{project.title}</h1>
             <div className="flex flex-wrap gap-4 text-white/70 text-sm">
               <span className="flex items-center gap-1"><MapPin className="w-4 h-4" />{project.location}</span>
-              <span className="flex items-center gap-1"><Ruler className="w-4 h-4" />{project.area}</span>
+              {project.area && <span className="flex items-center gap-1"><Ruler className="w-4 h-4" />{project.area}</span>}
               <span className="flex items-center gap-1"><Calendar className="w-4 h-4" />{project.year}</span>
             </div>
           </div>
@@ -60,8 +60,9 @@ export default function ProjectDetail({ project }: { project: Project }) {
                     <div className="grid grid-cols-5 gap-3">
                       {project.images.map((img, i) => (
                         <button
-                          key={i}
+                          key={img}
                           onClick={() => setActiveImage(img)}
+                          aria-label={`View image ${i + 1} of ${project.images.length}`}
                           className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                             activeImage === img ? "border-gold-400 shadow-gold" : "border-transparent opacity-70 hover:opacity-100"
                           }`}

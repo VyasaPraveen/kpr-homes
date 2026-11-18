@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "Privacy Policy - KPR Homes Tirupati",
   description:
     "Privacy Policy for KPR Homes, Tirupati's trusted construction company. Learn how we collect, use, and protect your personal information when you use our website kprhomes.in.",
+  robots: {
+    index: false,
+    follow: true,
+  },
   keywords: [
     "KPR Homes privacy policy",
     "privacy policy construction company",
@@ -79,7 +83,6 @@ export default function PrivacyPolicyPage() {
                 <li>Phone number</li>
                 <li>Email address</li>
                 <li>Message or enquiry details</li>
-                <li>Referral information</li>
               </ul>
 
               <h3 className="font-heading text-lg font-semibold text-navy-800 mb-3 mt-6">
@@ -103,7 +106,6 @@ export default function PrivacyPolicyPage() {
               <ul className="list-disc pl-6 space-y-2 text-charcoal-600">
                 <li>To respond to your enquiries and requests</li>
                 <li>To provide you with information about our projects and services</li>
-                <li>To process referrals</li>
                 <li>To improve our website and services</li>
                 <li>To communicate with you about updates, offers, and promotions</li>
                 <li>To comply with legal obligations</li>

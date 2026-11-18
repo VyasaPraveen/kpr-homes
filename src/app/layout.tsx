@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | KPR Homes",
   },
   description:
-    "KPR Homes is a premium construction contractor in Tirupati specializing in commercial buildings and residential apartments. 15+ years of excellence, 500+ projects delivered. Call +91 98493 51276.",
+    "KPR Homes is a premium construction contractor in Tirupati specializing in commercial buildings and residential apartments. 10+ years of excellence, 25+ projects delivered. Call +91 98493 51276.",
   keywords: [
     "construction company Tirupati",
     "residential apartments Tirupati",
@@ -45,26 +45,26 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    images: [{ url: "https://kprhomes.in/images/og-card.png", width: 1200, height: 630, alt: "KPR Homes - We create landmarks" }],
     title: "KPR Homes | Premium Construction Contractor in Tirupati",
     description:
-      "We create landmarks. Premium commercial buildings and residential apartments in Tirupati since 2008. 500+ projects, 200+ happy clients.",
+      "We create landmarks. Premium commercial buildings and residential apartments in Tirupati since 2015. 25+ projects, 150+ happy clients.",
     type: "website",
     locale: "en_IN",
     siteName: "KPR Homes",
     url: "https://kprhomes.in",
   },
   twitter: {
+    images: ["https://kprhomes.in/images/og-card.png"],
     card: "summary_large_image",
     title: "KPR Homes | Premium Construction Contractor in Tirupati",
     description:
-      "Building Dreams Into Reality. Premium commercial buildings and residential apartments in Tirupati since 2008.",
+      "Building Dreams Into Reality. Premium commercial buildings and residential apartments in Tirupati since 2015.",
   },
   alternates: {
     canonical: "https://kprhomes.in",
   },
-  verification: {
-    google: "add-your-google-verification-code-here",
-  },
+  // verification: { google: "YOUR-GOOGLE-VERIFICATION-CODE" }, // TODO: Add real Google verification code
   other: {
     "geo.region": "IN-AP",
     "geo.placename": "Tirupati",
@@ -77,7 +77,7 @@ const jsonLd = {
   "@id": "https://kprhomes.in",
   name: "KPR Homes",
   description:
-    "Premium construction contractor in Tirupati specializing in commercial buildings and residential apartments since 2008.",
+    "Premium construction contractor in Tirupati specializing in commercial buildings and residential apartments since 2015.",
   url: "https://kprhomes.in",
   telephone: "+919849351276",
   email: "kprprojects.ind@gmail.com",
@@ -108,7 +108,7 @@ const jsonLd = {
     "https://youtube.com/@kprhomes",
   ],
   priceRange: "$$",
-  foundingDate: "2008",
+  foundingDate: "2015",
   numberOfEmployees: "50-200",
   areaServed: {
     "@type": "City",
@@ -160,6 +160,15 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#1a2744" />
+        {/* Security meta rendered here (not injected after build) so React hydration matches.
+            The real headers, incl. X-Frame-Options, come from .htaccess. */}
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; frame-src 'none'; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; upgrade-insecure-requests;"
+        />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

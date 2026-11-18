@@ -4,14 +4,14 @@ export const packages: Package[] = [
   {
     name: "Standard",
     tier: "standard",
-    pricePerSqft: 1800,
+    pricePerSqft: 2000,
     description: "Quality construction with reliable materials and finishes, perfect for budget-conscious projects.",
     features: ["PCC Foundation", "Ceramic Tile Flooring", "Granite Kitchen Countertop", "Standard Bathroom Fittings", "Copper Wiring", "Basic Switches"],
   },
   {
     name: "Premium",
     tier: "premium",
-    pricePerSqft: 2800,
+    pricePerSqft: 2500,
     description: "Enhanced quality with premium materials, modern design, and smart features for the discerning homeowner.",
     highlighted: true,
     features: ["RCC Raft Foundation", "Vitrified Tile Flooring", "Quartz Kitchen Countertop", "Branded Bathroom Fittings", "Fire-resistant Wiring", "Modular Switches"],
@@ -19,7 +19,7 @@ export const packages: Package[] = [
   {
     name: "Luxury",
     tier: "luxury",
-    pricePerSqft: 4500,
+    pricePerSqft: 2900,
     description: "The finest materials, bespoke design, and cutting-edge technology for an unparalleled living experience.",
     features: ["RCC Raft + Waterproofing", "Italian Marble Flooring", "Custom Marble Countertop", "Imported Luxury Fittings", "Smart Wiring System", "Touch-panel Controls"],
   },
@@ -49,9 +49,4 @@ export const packageFeatures: PackageFeature[] = [
   { category: "Plumbing", feature: "Pipe Type", standard: "CPVC", premium: "CPVC + Concealed", luxury: "Composite + Concealed" },
   { category: "Plumbing", feature: "Water Heater", standard: "Geyser Points", premium: "Geyser Included", luxury: "Central Heating System" },
   { category: "Plumbing", feature: "Water Purifier", standard: false, premium: "RO Point", luxury: "Built-in RO System" },
-  { category: "Extras", feature: "Landscaping", standard: false, premium: "Basic Garden", luxury: "Designer Landscaping" },
-  { category: "Extras", feature: "Parking", standard: "Open Parking", premium: "Covered Parking", luxury: "Basement Parking" },
-  { category: "Extras", feature: "Security System", standard: "Basic CCTV", premium: "CCTV + Video Door", luxury: "Full Security Suite" },
-  { category: "Extras", feature: "Solar Panels", standard: false, premium: false, luxury: true },
-  { category: "Extras", feature: "EV Charging", standard: false, premium: "Provision", luxury: "Installed" },
 ];

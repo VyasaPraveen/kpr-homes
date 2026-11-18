@@ -19,7 +19,6 @@ import { SITE_CONFIG } from "@/lib/constants";
 import {
   BASE_RATES,
   CONSTRUCTION_TYPES,
-  ADDITIONAL_OPTIONS,
   COST_BREAKDOWN_PERCENTAGES,
 } from "@/data/estimator";
 import AnimatedCounter from "@/components/animations/AnimatedCounter";
@@ -29,9 +28,13 @@ const steps = [
   "Area",
   "Construction",
   "Material Quality",
-  "Add-ons",
   "Summary",
 ];
+
+const PROPERTY_LABELS = {
+  residential: "Residential Construction Contract",
+  commercial: "Commercial Construction Contract",
+} as const;
 
 const qualityTiers = [
   {
@@ -67,7 +70,6 @@ export default function EstimatorForm() {
   const [area, setArea] = useState(1500);
   const [constructionType, setConstructionType] = useState("new");
   const [quality, setQuality] = useState<"standard" | "premium" | "luxury">("premium");
-  const [addons, setAddons] = useState<string[]>([]);
 
   const constructionMultiplier =
     CONSTRUCTION_TYPES.find((c) => c.id === constructionType)?.multiplier ?? 1;
@@ -77,28 +79,24 @@ export default function EstimatorForm() {
     return Math.round(rate * area * constructionMultiplier);
   }, [propertyType, quality, area, constructionMultiplier]);
 
-  const addonCost = useMemo(() => {
-    return ADDITIONAL_OPTIONS.filter((opt) => addons.includes(opt.id)).reduce(
-      (total, opt) => total + (opt.type === "per-sqft" ? opt.cost * area : opt.cost),
-      0
-    );
-  }, [addons, area]);
+  const totalCost = baseCost;
 
-  const totalCost = baseCost + addonCost;
-
+  // Split the total by share; the last line takes the rounding remainder
+  // so the breakdown always adds up exactly to the estimated total.
   const costBreakdown = useMemo(() => {
-    return Object.entries(COST_BREAKDOWN_PERCENTAGES).map(([key, pct]) => ({
-      label: key.charAt(0).toUpperCase() + key.slice(1),
-      value: Math.round(baseCost * pct),
-      percentage: Math.round(pct * 100),
-    }));
+    const entries = Object.entries(COST_BREAKDOWN_PERCENTAGES);
+    let allocated = 0;
+    return entries.map(([key, pct], i) => {
+      const value =
+        i === entries.length - 1 ? baseCost - allocated : Math.round(baseCost * pct);
+      allocated += value;
+      return {
+        label: key.charAt(0).toUpperCase() + key.slice(1),
+        value,
+        percentage: Math.round(pct * 100),
+      };
+    });
   }, [baseCost]);
-
-  const toggleAddon = (id: string) => {
-    setAddons((prev) =>
-      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id]
-    );
-  };
 
   const nextStep = () => setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0));
@@ -180,14 +178,14 @@ export default function EstimatorForm() {
                     )}
                   />
                   <h4 className="font-heading text-lg font-bold text-navy-900 mb-1">
-                    Residential
+                    Residential Construction Contract
                   </h4>
-                  <p className="text-charcoal-500 text-sm">Homes, apartments, villas</p>
+                  <p className="text-charcoal-500 text-sm">Home, Home Stay, Duplex Home etc.</p>
                 </motion.button>
 
                 {/* Commercial Button - Redirects to WhatsApp */}
                 <motion.a
-                  href={`${SITE_CONFIG.socialLinks.whatsapp}?text=${encodeURIComponent("Hi KPR Homes, I'm interested in commercial construction. Please share the details and pricing.")}`}
+                  href={`${SITE_CONFIG.socialLinks.whatsapp}?text=${encodeURIComponent("Hi KPR Homes, I'm interested in a commercial construction contract (hospital / office / bank etc.). Please share the details and pricing.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
@@ -196,9 +194,9 @@ export default function EstimatorForm() {
                 >
                   <Building2 className="w-12 h-12 mx-auto mb-4 text-charcoal-400" />
                   <h4 className="font-heading text-lg font-bold text-navy-900 mb-1">
-                    Commercial
+                    Commercial Construction Contract
                   </h4>
-                  <p className="text-charcoal-500 text-sm mb-3">Offices, shops, complexes</p>
+                  <p className="text-charcoal-500 text-sm mb-3">Hospital, Office, Bank etc.</p>
                   <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-green-500 text-white text-xs font-semibold rounded-full">
                     <MessageCircle className="w-3.5 h-3.5" />
                     Chat on WhatsApp
@@ -253,7 +251,7 @@ export default function EstimatorForm() {
               <p className="text-charcoal-500 mb-8">
                 What kind of construction work do you need?
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
                 {CONSTRUCTION_TYPES.map((type) => (
                   <motion.button
                     key={type.id}
@@ -326,59 +324,8 @@ export default function EstimatorForm() {
             </div>
           )}
 
-          {/* Step 4: Add-ons */}
+          {/* Step 4: Summary */}
           {currentStep === 4 && (
-            <div className="text-center">
-              <h3 className="font-heading text-2xl font-bold text-navy-900 mb-2">
-                Additional Features
-              </h3>
-              <p className="text-charcoal-500 mb-8">
-                Select any additional features you&apos;d like
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
-                {ADDITIONAL_OPTIONS.map((option) => (
-                  <motion.button
-                    key={option.id}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    onClick={() => toggleAddon(option.id)}
-                    className={cn(
-                      "flex items-center gap-4 p-4 rounded-xl border-2 transition-all duration-300 text-left",
-                      addons.includes(option.id)
-                        ? "border-gold-400 bg-gold-50"
-                        : "border-charcoal-200 bg-white hover:border-navy-200"
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        "w-6 h-6 rounded-md border-2 flex items-center justify-center shrink-0 transition-all",
-                        addons.includes(option.id)
-                          ? "border-gold-400 bg-gold-400"
-                          : "border-charcoal-300"
-                      )}
-                    >
-                      {addons.includes(option.id) && (
-                        <Check className="w-3.5 h-3.5 text-navy-900" />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-medium text-navy-900 text-sm">
-                        {option.label}
-                      </p>
-                      <p className="text-charcoal-400 text-xs">
-                        {option.type === "per-sqft"
-                          ? `${formatCurrency(option.cost)}/sq ft`
-                          : formatCurrency(option.cost)}
-                      </p>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Step 5: Summary */}
-          {currentStep === 5 && (
             <div>
               <h3 className="font-heading text-2xl font-bold text-navy-900 mb-2 text-center">
                 Your Estimate
@@ -414,30 +361,6 @@ export default function EstimatorForm() {
                     ))}
                   </div>
 
-                  {addons.length > 0 && (
-                    <div className="bg-charcoal-50 rounded-xl p-6">
-                      <h4 className="font-semibold text-navy-900 mb-3">
-                        Add-ons
-                      </h4>
-                      {ADDITIONAL_OPTIONS.filter((o) =>
-                        addons.includes(o.id)
-                      ).map((addon) => (
-                        <div
-                          key={addon.id}
-                          className="flex justify-between text-sm py-2 border-b border-charcoal-100 last:border-0"
-                        >
-                          <span className="text-charcoal-600">{addon.label}</span>
-                          <span className="font-medium text-navy-900">
-                            {formatCurrency(
-                              addon.type === "per-sqft"
-                                ? addon.cost * area
-                                : addon.cost
-                            )}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
 
                 {/* Total Card */}
@@ -452,7 +375,7 @@ export default function EstimatorForm() {
                     <div className="space-y-2 text-sm text-gray-300 mb-6">
                       <div className="flex justify-between">
                         <span>Property</span>
-                        <span className="capitalize">{propertyType}</span>
+                        <span className="text-right">{PROPERTY_LABELS[propertyType]}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Area</span>
@@ -471,15 +394,20 @@ export default function EstimatorForm() {
                         </span>
                       </div>
                     </div>
-                    <motion.button
+                    <motion.a
+                      href={`${SITE_CONFIG.socialLinks.whatsapp}?text=${encodeURIComponent(
+                        `Hi KPR Homes, I used your Cost Estimator:\n\nProperty: ${PROPERTY_LABELS[propertyType]}\nArea: ${area.toLocaleString()} sq ft\nQuality: ${quality}\nType: ${CONSTRUCTION_TYPES.find((c) => c.id === constructionType)?.label || constructionType}\nEstimated Cost: ${formatCurrency(totalCost)}\n\nPlease share a detailed quote.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 bg-gradient-gold text-navy-900 font-semibold rounded-lg animate-pulse-gold"
+                      className="block w-full py-3 bg-gradient-gold text-navy-900 font-semibold rounded-lg text-center"
                     >
                       Get Detailed Quote
-                    </motion.button>
+                    </motion.a>
                     <p className="text-gray-500 text-xs mt-3 text-center">
-                      *This is an approximate estimate. Actual costs may vary.
+                      *Approximate construction cost only. GST, registration and interiors are not included. Actual costs may vary.
                     </p>
                   </div>
                 </div>

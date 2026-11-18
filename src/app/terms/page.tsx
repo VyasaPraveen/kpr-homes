@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "Terms of Service - KPR Homes Tirupati",
   description:
     "Terms of Service for KPR Homes, Tirupati's trusted construction company. Read the terms and conditions governing the use of our website kprhomes.in and our construction services.",
+  robots: {
+    index: false,
+    follow: true,
+  },
   keywords: [
     "KPR Homes terms of service",
     "terms and conditions construction company",
@@ -121,21 +125,7 @@ export default function TermsOfServicePage() {
 
             <div>
               <h2 className="font-heading text-2xl font-bold text-navy-900 mb-4">
-                6. Referral Programme
-              </h2>
-              <p className="text-charcoal-600 leading-relaxed">
-                Our referral programme is subject to its own terms and
-                conditions. Referral rewards are at the sole discretion of{" "}
-                {SITE_CONFIG.name} and may be modified or discontinued at any
-                time. Referrals must be genuine and the referred party must not
-                already be in contact with {SITE_CONFIG.name}. We reserve the
-                right to verify all referrals before processing any rewards.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-2xl font-bold text-navy-900 mb-4">
-                7. Project Information
+                6. Project Information
               </h2>
               <p className="text-charcoal-600 leading-relaxed">
                 Project details, images, specifications, and completion
@@ -149,7 +139,7 @@ export default function TermsOfServicePage() {
 
             <div>
               <h2 className="font-heading text-2xl font-bold text-navy-900 mb-4">
-                8. Limitation of Liability
+                7. Limitation of Liability
               </h2>
               <p className="text-charcoal-600 leading-relaxed">
                 {SITE_CONFIG.name} shall not be liable for any direct, indirect,
@@ -162,7 +152,7 @@ export default function TermsOfServicePage() {
 
             <div>
               <h2 className="font-heading text-2xl font-bold text-navy-900 mb-4">
-                9. Third-Party Links
+                8. Third-Party Links
               </h2>
               <p className="text-charcoal-600 leading-relaxed">
                 Our website contains links to third-party websites and services
@@ -175,7 +165,7 @@ export default function TermsOfServicePage() {
 
             <div>
               <h2 className="font-heading text-2xl font-bold text-navy-900 mb-4">
-                10. Governing Law
+                9. Governing Law
               </h2>
               <p className="text-charcoal-600 leading-relaxed">
                 These Terms of Service shall be governed by and construed in
@@ -187,7 +177,7 @@ export default function TermsOfServicePage() {
 
             <div>
               <h2 className="font-heading text-2xl font-bold text-navy-900 mb-4">
-                11. Changes to Terms
+                10. Changes to Terms
               </h2>
               <p className="text-charcoal-600 leading-relaxed">
                 We reserve the right to modify these Terms of Service at any
@@ -199,7 +189,7 @@ export default function TermsOfServicePage() {
 
             <div>
               <h2 className="font-heading text-2xl font-bold text-navy-900 mb-4">
-                12. Contact Us
+                11. Contact Us
               </h2>
               <p className="text-charcoal-600 leading-relaxed">
                 If you have any questions about these Terms of Service, please

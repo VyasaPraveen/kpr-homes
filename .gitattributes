@@ -1,0 +1,12 @@
+# Source files use LF line endings (stops CRLF warnings on Windows)
+* text=auto eol=lf
+
+# Binary assets: never convert
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

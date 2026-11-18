@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StaggerChildren from "@/components/animations/StaggerChildren";
+import { SITE_CONFIG } from "@/lib/constants";
 import { team } from "@/data/team";
 
 export default function TeamGrid() {
@@ -25,14 +26,25 @@ export default function TeamGrid() {
               >
                 <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300">
                   <div className="relative h-72 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-navy flex items-center justify-center">
-                      <span className="text-7xl font-heading font-bold text-white/20">{member.name.charAt(0)}</span>
-                    </div>
+                    {member.image ? (
+                      <div
+                        role="img"
+                        aria-label={`${member.name}, ${member.role} of KPR Homes`}
+                        className="absolute inset-0 bg-cover bg-top"
+                        style={{ backgroundImage: `url('${member.image}')` }}
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-navy flex items-center justify-center">
+                        <span className="text-7xl font-heading font-bold text-white/20">{member.name.charAt(0)}</span>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                      <motion.a href={member.linkedin || "#"} whileHover={{ scale: 1.2 }} className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-gold-400 hover:text-navy-900 transition-colors">
-                        <Linkedin className="w-4 h-4" />
-                      </motion.a>
-                      <motion.a href="#" whileHover={{ scale: 1.2 }} className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-gold-400 hover:text-navy-900 transition-colors">
+                      {member.linkedin && (
+                        <motion.a href={member.linkedin} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2 }} className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-gold-400 hover:text-navy-900 transition-colors" aria-label={`${member.name} LinkedIn`}>
+                          <Linkedin className="w-4 h-4" />
+                        </motion.a>
+                      )}
+                      <motion.a href={`mailto:${SITE_CONFIG.email}`} whileHover={{ scale: 1.2 }} className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-gold-400 hover:text-navy-900 transition-colors" aria-label={`Email ${member.name}`}>
                         <Mail className="w-4 h-4" />
                       </motion.a>
                     </div>

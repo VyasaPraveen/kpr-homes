@@ -5,7 +5,7 @@ import TestimonialGrid from "@/components/testimonials/TestimonialGrid";
 export const metadata: Metadata = {
   title: "Client Testimonials & Reviews - Tirupati's Trusted Builder",
   description:
-    "Read genuine reviews from 200+ happy KPR Homes clients in Tirupati. 4.8/5 star rating. See why homeowners and businesses trust us for apartments and commercial buildings in Tirupati, Andhra Pradesh.",
+    "What KPR Homes clients in Tirupati say about our apartments and construction contracts. See why homeowners and businesses trust us to build in Tirupati, Andhra Pradesh.",
   keywords: [
     "KPR Homes reviews",
     "construction company reviews Tirupati",
@@ -22,64 +22,22 @@ export const metadata: Metadata = {
     canonical: "https://kprhomes.in/testimonials",
   },
   openGraph: {
-    title: "KPR Homes Client Testimonials - 200+ Happy Clients in Tirupati",
+    title: "KPR Homes Client Testimonials - 150+ Happy Clients in Tirupati",
     description:
-      "Real reviews from real clients. 4.8/5 rating. Discover why KPR Homes is Tirupati's most trusted construction company.",
+      "Hear from our clients. Discover why KPR Homes is Tirupati's most trusted construction company.",
     url: "https://kprhomes.in/testimonials",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KPR Homes Reviews - 200+ Happy Clients in Tirupati",
+    title: "KPR Homes Reviews - 150+ Happy Clients in Tirupati",
     description:
-      "4.8/5 star rating. Read genuine reviews from homeowners and businesses in Tirupati.",
+      "What homeowners and businesses in Tirupati say about KPR Homes.",
   },
-};
-
-const reviewJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "KPR Homes",
-  url: "https://kprhomes.in",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "200",
-    reviewCount: "200",
-  },
-  review: [
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Rajesh Kumar" },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "KPR Homes delivered our corporate headquarters on time and beyond expectations. The attention to detail and quality of construction is truly world-class.",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Priya Sharma" },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody:
-        "Our dream home at KPR Meridian is everything we imagined and more. The premium interiors and smart home features are exceptional.",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Sunita Reddy" },
-      reviewRating: { "@type": "Rating", ratingValue: "4", bestRating: "5" },
-      reviewBody:
-        "We chose KPR Homes for our apartment at KPR Oakridge, and it was the best decision. The construction quality and community amenities are top-notch.",
-    },
-  ],
 };
 
 export default function TestimonialsPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
-      />
       <TestimonialsHero />
       <TestimonialGrid />
       <section className="py-20 bg-gradient-gold">

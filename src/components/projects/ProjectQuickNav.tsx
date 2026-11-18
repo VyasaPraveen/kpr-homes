@@ -3,43 +3,33 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Building2, Home, Calculator, ArrowLeftRight } from "lucide-react";
+import { Building2, Home, Calculator, ArrowLeftRight, KeyRound, PhoneCall } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const quickNavItems = [
-  {
-    label: "Commercial Projects",
-    href: "/projects/commercial",
-    icon: Building2,
-    description: "Office buildings & retail spaces",
-  },
-  {
-    label: "Residential Projects",
-    href: "/projects/residential",
-    icon: Home,
-    description: "Luxury apartments & homes",
-  },
-  {
-    label: "Cost Estimator",
-    href: "/cost-estimator",
-    icon: Calculator,
-    description: "Calculate your construction cost",
-  },
-  {
-    label: "Compare Packages",
-    href: "/compare-packages",
-    icon: ArrowLeftRight,
-    description: "Standard, Premium & Luxury",
-  },
-];
+const NAV_SETS = {
+  // KPR Construction - contract work for clients
+  contracts: [
+    { label: "Construction Contracts", href: "/projects/commercial", icon: Building2, description: "Homes, hospitals, offices & more" },
+    { label: "Cost Estimator", href: "/cost-estimator", icon: Calculator, description: "Calculate your construction cost" },
+    { label: "Compare Packages", href: "/compare-packages", icon: ArrowLeftRight, description: "Standard, Premium & Luxury" },
+    { label: "Get a Quote", href: "/contact", icon: PhoneCall, description: "Talk to our team" },
+  ],
+  // KPR Developments - KPR's own apartments for sale
+  residential: [
+    { label: "Residential Projects", href: "/projects/residential", icon: Home, description: "KPR apartment developments" },
+    { label: "Available Flats", href: "/available-flats", icon: KeyRound, description: "2 & 3 BHK flats for sale" },
+    { label: "Book a Site Visit", href: "/contact", icon: PhoneCall, description: "See the homes in person" },
+  ],
+};
 
-export default function ProjectQuickNav() {
+export default function ProjectQuickNav({ variant }: { variant: keyof typeof NAV_SETS }) {
+  const quickNavItems = NAV_SETS[variant];
   const pathname = usePathname();
 
   return (
     <section className="bg-white border-b border-charcoal-100">
       <div className="container-custom py-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className={cn("grid grid-cols-2 gap-3", quickNavItems.length === 4 ? "md:grid-cols-4" : "md:grid-cols-3")}>
           {quickNavItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -67,7 +57,7 @@ export default function ProjectQuickNav() {
                   <div className="min-w-0">
                     <p
                       className={cn(
-                        "text-sm font-semibold truncate",
+                        "text-sm font-semibold leading-snug",
                         isActive ? "text-white" : "text-navy-900"
                       )}
                     >
@@ -75,7 +65,7 @@ export default function ProjectQuickNav() {
                     </p>
                     <p
                       className={cn(
-                        "text-xs truncate",
+                        "text-xs truncate hidden sm:block",
                         isActive ? "text-white/70" : "text-charcoal-400"
                       )}
                     >

@@ -18,19 +18,19 @@ export default function CompanyStory() {
               </h2>
               <div className="space-y-4 text-charcoal-600 leading-relaxed">
                 <p>
-                  Founded in 2008 by K. Prasad Rao, KPR Homes began with a simple yet powerful
+                  Founded in 2015 by K. Prasad Rao, KPR Homes began with a simple yet powerful
                   vision: to transform the construction landscape with premium quality, innovative
                   design, and unwavering commitment to client satisfaction.
                 </p>
                 <p>
                   What started as a small residential construction firm has grown into one of the
-                  most trusted names in both commercial and residential construction across India.
-                  With over 500 projects delivered and a 98% client satisfaction rate, we have
+                  most trusted names in both commercial and residential construction in Tirupati.
+                  With 25+ projects delivered and a 99% client satisfaction rate, we have
                   earned our reputation through dedication and excellence.
                 </p>
                 <p>
-                  Today, KPR Homes stands as a beacon of quality construction, with a team of 200+
-                  skilled professionals working across 5 major cities.
+                  Today, KPR Homes stands as a beacon of quality construction, with a team of 50+
+                  skilled professionals working across Tirupati.
                 </p>
               </div>
               <div className="mt-8 p-6 border-l-4 border-gold-400 bg-gold-50 rounded-r-lg">
@@ -51,7 +51,7 @@ export default function CompanyStory() {
                   className="rounded-2xl overflow-hidden shadow-card h-64 bg-cover bg-center"
                   style={{
                     backgroundImage:
-                      "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&q=80')",
+                      "url('/images/projects/residential/kpr-pride-1.jpg')",
                   }}
                 />
                 <motion.div
@@ -59,7 +59,7 @@ export default function CompanyStory() {
                   className="rounded-2xl overflow-hidden shadow-card h-64 mt-8 bg-cover bg-center"
                   style={{
                     backgroundImage:
-                      "url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&q=80')",
+                      "url('/images/projects/available/progress-2.jpg')",
                   }}
                 />
                 <motion.div
@@ -67,7 +67,7 @@ export default function CompanyStory() {
                   className="rounded-2xl overflow-hidden shadow-card h-64 -mt-4 bg-cover bg-center"
                   style={{
                     backgroundImage:
-                      "url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80')",
+                      "url('/images/about/kpr-building.jpg')",
                   }}
                 />
                 <motion.div
@@ -75,13 +75,13 @@ export default function CompanyStory() {
                   className="rounded-2xl overflow-hidden shadow-card h-64 mt-4 bg-cover bg-center"
                   style={{
                     backgroundImage:
-                      "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80')",
+                      "url('/images/projects/residential/mokshitha-enclave-2.jpg')",
                   }}
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-gold rounded-2xl flex items-center justify-center shadow-gold">
                 <div className="text-center">
-                  <div className="text-2xl font-heading font-bold text-navy-900">15+</div>
+                  <div className="text-2xl font-heading font-bold text-navy-900">10+</div>
                   <div className="text-xs text-navy-800 font-medium">Years</div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot, User } from "lucide-react";
 import Image from "next/image";
@@ -9,6 +9,9 @@ import {
   GREETING_MESSAGES,
   QUICK_REPLIES,
 } from "@/data/chatbotResponses";
+
+const MAX_MESSAGE_LENGTH = 500;
+const MAX_MESSAGES = 50;
 
 interface Message {
   id: string;
@@ -28,7 +31,7 @@ export default function ChatWidget() {
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setIsTyping(true);
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setMessages([
           {
             id: "greeting-1",
@@ -39,6 +42,7 @@ export default function ChatWidget() {
         ]);
         setIsTyping(false);
       }, 600);
+      return () => clearTimeout(timer);
     }
   }, [isOpen, messages.length]);
 
@@ -50,9 +54,16 @@ export default function ChatWidget() {
     if (isOpen) inputRef.current?.focus();
   }, [isOpen]);
 
-  const handleSend = (text?: string) => {
-    const messageText = text || input.trim();
+  const handleSend = useCallback((text?: string) => {
+    const rawText = text || input.trim();
+    if (!rawText) return;
+
+    // Security: strip control characters, enforce length limit, prevent flood.
+    // React escapes text on render, so no HTML-escaping here (it showed "&#x27;" to users).
+    const messageText = rawText.replace(/[\u0000-\u001F\u007F]/g, " ").trim().slice(0, MAX_MESSAGE_LENGTH);
     if (!messageText) return;
+
+    if (messages.length >= MAX_MESSAGES) return;
 
     const userMsg: Message = {
       id: `user-${Date.now()}`,
@@ -63,7 +74,7 @@ export default function ChatWidget() {
     setInput("");
 
     setIsTyping(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       const { response, followUp } = findResponse(messageText);
       const botMsg: Message = {
         id: `bot-${Date.now()}`,
@@ -74,7 +85,8 @@ export default function ChatWidget() {
       setMessages((prev) => [...prev, botMsg]);
       setIsTyping(false);
     }, 800 + Math.random() * 400);
-  };
+    return () => clearTimeout(timer);
+  }, [input, messages.length]);
 
   return (
     <>
@@ -134,6 +146,7 @@ export default function ChatWidget() {
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-white/70 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10"
+                aria-label="Close chat"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -162,15 +175,17 @@ export default function ChatWidget() {
                           : "bg-white text-charcoal-700 rounded-2xl rounded-tl-sm shadow-sm border border-gray-100"
                       }`}
                     >
-                      {msg.text.split(/\*\*(.*?)\*\*/g).map((part, i) =>
-                        i % 2 === 1 ? (
-                          <strong key={i} className="font-semibold">
-                            {part}
-                          </strong>
-                        ) : (
-                          <span key={i}>{part}</span>
-                        )
-                      )}
+                      {msg.sender === "bot"
+                        ? msg.text.split(/\*\*(.*?)\*\*/g).map((part, i) =>
+                            i % 2 === 1 ? (
+                              <strong key={i} className="font-semibold">
+                                {part}
+                              </strong>
+                            ) : (
+                              <span key={i}>{part}</span>
+                            )
+                          )
+                        : msg.text}
                     </div>
                     {/* Quick Reply Buttons */}
                     {msg.sender === "bot" && msg.followUp && (
@@ -227,8 +242,11 @@ export default function ChatWidget() {
                 <input
                   ref={inputRef}
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e) => setInput(e.target.value.slice(0, MAX_MESSAGE_LENGTH))}
                   placeholder="Type your message..."
+                  maxLength={MAX_MESSAGE_LENGTH}
+                  aria-label="Chat message"
+                  autoComplete="off"
                   className="flex-1 px-4 py-2.5 bg-gray-100 rounded-lg text-sm text-charcoal-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-400/50 transition-all"
                 />
                 <motion.button

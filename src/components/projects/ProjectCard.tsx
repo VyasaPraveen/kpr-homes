@@ -7,8 +7,8 @@ import Badge from "@/components/ui/Badge";
 import { Project } from "@/types";
 
 const fallbackImages = {
-  commercial: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
-  residential: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
+  commercial: "/images/projects/placeholder.jpg",
+  residential: "/images/projects/placeholder.jpg",
 };
 
 export default function ProjectCard({ project }: { project: Project }) {

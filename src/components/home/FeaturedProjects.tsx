@@ -66,7 +66,7 @@ export default function FeaturedProjects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {getVisibleProjects().map((project, i) => (
             <motion.div
-              key={`${project.id}-${currentIndex}-${i}`}
+              key={`${project.id}-${i}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
@@ -79,11 +79,7 @@ export default function FeaturedProjects() {
                       className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-110 group-hover:brightness-105"
                       style={{
                         backgroundImage: `url('${
-                          project.thumbnail || project.images[0] || (
-                            project.category === "commercial"
-                              ? "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
-                              : "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80"
-                          )
+                          project.thumbnail || project.images[0] || "/images/projects/placeholder.jpg"
                         }')`,
                       }}
                     />

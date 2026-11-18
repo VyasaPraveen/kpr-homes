@@ -3,13 +3,12 @@ import CompanyStory from "@/components/about/CompanyStory";
 import MissionVision from "@/components/about/MissionVision";
 import Timeline from "@/components/about/Timeline";
 import TeamGrid from "@/components/about/TeamGrid";
-import Certifications from "@/components/about/Certifications";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title: "About Us - Tirupati's Trusted Construction Company Since 2008",
+  title: "About Us - Tirupati's Trusted Construction Company Since 2015",
   description:
-    "KPR Homes is Tirupati's most trusted construction company with 15+ years of experience. 500+ projects delivered, 200+ happy clients. Meet our expert team of builders and architects in Tirupati, Andhra Pradesh.",
+    "KPR Homes is Tirupati's most trusted construction company with 10+ years of experience. 25+ projects delivered, 150+ happy clients. Meet our expert team of builders and architects in Tirupati, Andhra Pradesh.",
   keywords: [
     "about KPR Homes",
     "construction company history Tirupati",
@@ -26,16 +25,16 @@ export const metadata: Metadata = {
     canonical: "https://kprhomes.in/about",
   },
   openGraph: {
-    title: "About KPR Homes - Building Excellence in Tirupati Since 2008",
+    title: "About KPR Homes - Building Excellence in Tirupati Since 2015",
     description:
-      "15+ years of experience building premium residential apartments and commercial buildings in Tirupati. 500+ projects, 200+ happy clients.",
+      "10+ years of experience building premium residential apartments and commercial buildings in Tirupati. 25+ projects, 150+ happy clients.",
     url: "https://kprhomes.in/about",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About KPR Homes - Tirupati's Trusted Builder Since 2008",
+    title: "About KPR Homes - Tirupati's Trusted Builder Since 2015",
     description:
-      "15+ years, 500+ projects, 200+ happy clients. Learn about Tirupati's leading construction company.",
+      "10+ years, 25+ projects, 150+ happy clients. Learn about Tirupati's leading construction company.",
   },
 };
 
@@ -45,7 +44,7 @@ const aboutJsonLd = {
   name: "KPR Homes",
   url: "https://kprhomes.in",
   logo: "https://kprhomes.in/images/logo.png",
-  foundingDate: "2008",
+  foundingDate: "2015",
   description:
     "Premium construction contractor in Tirupati specializing in residential apartments and commercial buildings.",
   address: {
@@ -77,14 +76,13 @@ export default function AboutPage() {
       <PageHero
         label="Our Story"
         title="About KPR Homes"
-        subtitle="Building excellence and delivering trust since 2008"
+        subtitle="Building excellence and delivering trust since 2015"
         paddingBottom="pb-20"
       />
       <CompanyStory />
       <MissionVision />
       <Timeline />
       <TeamGrid />
-      <Certifications />
     </>
   );
 }

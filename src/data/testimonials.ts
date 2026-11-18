@@ -8,7 +8,7 @@ export const testimonials: Testimonial[] = [
     company: "TechVista Solutions",
     content: "KPR Homes delivered our corporate headquarters on time and beyond expectations. The attention to detail and quality of construction is truly world-class. Every visitor compliments the building's design.",
     rating: 5,
-    image: "/images/testimonials/rajesh.jpg",
+    image: "",
     projectType: "Commercial",
   },
   {
@@ -17,7 +17,7 @@ export const testimonials: Testimonial[] = [
     role: "Homeowner",
     content: "Our dream home at KPR Meridian is everything we imagined and more. KPR Homes understood our vision perfectly and delivered a home that our family loves. The premium interiors and smart home features are exceptional.",
     rating: 5,
-    image: "/images/testimonials/priya.jpg",
+    image: "",
     projectType: "Residential",
   },
   {
@@ -27,7 +27,7 @@ export const testimonials: Testimonial[] = [
     company: "Retail Group",
     content: "The Lucky's commercial project was handled with exceptional professionalism. KPR Homes managed the complex requirements of a mixed-use commercial space flawlessly. Their project management skills are outstanding.",
     rating: 5,
-    image: "/images/testimonials/arun.jpg",
+    image: "",
     projectType: "Commercial",
   },
   {
@@ -36,7 +36,7 @@ export const testimonials: Testimonial[] = [
     role: "Homeowner",
     content: "We chose KPR Homes for our apartment at KPR Oakridge, and it was the best decision. The construction quality, the landscaping, and the community amenities are all top-notch. Highly recommend them!",
     rating: 4,
-    image: "/images/testimonials/sunita.jpg",
+    image: "",
     projectType: "Residential",
   },
   {
@@ -46,7 +46,7 @@ export const testimonials: Testimonial[] = [
     company: "Singh & Associates",
     content: "Professional, transparent, and reliable. KPR Homes renovated our office space and the transformation was remarkable. They completed the project within budget and the quality exceeded our expectations.",
     rating: 5,
-    image: "/images/testimonials/vikram.jpg",
+    image: "",
     projectType: "Commercial",
   },
   {
@@ -55,7 +55,7 @@ export const testimonials: Testimonial[] = [
     role: "Homeowner",
     content: "Living at KPR Elite has been a dream come true. The spacious layouts, the amenities, and the construction quality are all premium. KPR Homes truly builds homes, not just buildings.",
     rating: 5,
-    image: "/images/testimonials/anjali.jpg",
+    image: "",
     projectType: "Residential",
   },
 ];

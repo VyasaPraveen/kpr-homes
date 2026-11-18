@@ -33,9 +33,9 @@ const services = [
     href: "/projects/residential",
   },
   {
-    title: "Commercial Buildings",
+    title: "Commercial Construction",
     description:
-      "State-of-the-art office complexes, IT parks, and retail spaces engineered for productivity.",
+      "Hospitals, offices, banks and commercial complexes built on contract with engineered quality.",
     icon: "Building2",
     href: "/projects/commercial",
   },

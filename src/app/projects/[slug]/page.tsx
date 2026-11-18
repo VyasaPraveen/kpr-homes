@@ -16,24 +16,24 @@ export async function generateMetadata({
   if (!project) return {};
   const categoryLabel =
     project.category === "commercial"
-      ? "Commercial Building"
-      : "Residential Apartment";
+      ? "Construction Contract"
+      : "Residential Project";
   const statusLabel = project.status === "completed" ? "Completed" : "Ongoing";
 
   return {
-    title: `${project.title} - ${categoryLabel} in Tirupati | KPR Homes`,
+    title: `${project.title} - ${categoryLabel} in Tirupati`,
     description: `${project.description} ${statusLabel} ${categoryLabel.toLowerCase()} project in ${project.location} by KPR Homes. Features: ${project.features.slice(0, 3).join(", ")}.`,
     keywords: [
       project.title,
       `${project.title} Tirupati`,
       `${categoryLabel} Tirupati`,
       `KPR Homes ${project.title}`,
-      `${project.location} ${project.category} project`,
+      `${project.location} ${categoryLabel.toLowerCase()}`,
       `${statusLabel.toLowerCase()} projects Tirupati`,
       `${project.subcategory} Tirupati`,
       "KPR Homes projects",
       "construction company Tirupati",
-      `best ${project.category} projects Tirupati`,
+      project.category === "commercial" ? "construction contractor Tirupati" : "apartments for sale Tirupati",
     ],
     alternates: {
       canonical: `https://kprhomes.in/projects/${project.slug}`,
@@ -64,8 +64,8 @@ export default function ProjectDetailPage({
 
   const categoryLabel =
     project.category === "commercial"
-      ? "Commercial Building"
-      : "Residential Apartment";
+      ? "Construction Contract"
+      : "Residential Project";
 
   const projectJsonLd = {
     "@context": "https://schema.org",

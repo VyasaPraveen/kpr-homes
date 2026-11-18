@@ -23,7 +23,7 @@ export default function HeroSection() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80')",
+              "url('/images/projects/residential/kpr-pride-1.jpg')",
             y: backgroundY,
           }}
         />
@@ -73,7 +73,7 @@ export default function HeroSection() {
         >
           <div className="w-2 h-2 bg-gold-400 rounded-full animate-pulse" />
           <span className="text-gold-400 text-sm font-medium tracking-wide">
-            Premium Construction Since 2008
+            Premium Construction Since 2015
           </span>
         </motion.div>
 

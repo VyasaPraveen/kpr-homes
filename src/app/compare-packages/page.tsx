@@ -7,7 +7,7 @@ import PageHero from "@/components/ui/PageHero";
 export const metadata: Metadata = {
   title: "Compare Construction Packages - Standard, Premium & Luxury in Tirupati",
   description:
-    "Compare KPR Homes construction packages - Standard, Premium, and Luxury. Transparent pricing with detailed feature comparison for residential apartments and commercial buildings in Tirupati, Andhra Pradesh.",
+    "Compare KPR Homes construction packages - Standard, Premium, and Luxury. Construction-contract rates from ₹2,000/sq ft with a detailed feature comparison for homes and commercial buildings in Tirupati, Andhra Pradesh.",
   keywords: [
     "construction packages Tirupati",
     "building cost comparison Tirupati",
@@ -44,7 +44,7 @@ export default function ComparePackagesPage() {
       <PageHero
         label="Transparent Pricing"
         title="Compare Packages"
-        subtitle="Find the perfect construction package that fits your needs and budget"
+        subtitle="Construction-contract packages for your home or commercial building - find the one that fits your needs and budget"
       />
 
       {/* Pricing Tiers */}

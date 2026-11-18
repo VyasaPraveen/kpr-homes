@@ -5,7 +5,7 @@ import ProjectQuickNav from "@/components/projects/ProjectQuickNav";
 import { getProjectsByCategory } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Residential Apartments in Tirupati - Luxury 2, 3 & 4 BHK Flats",
+  title: "Residential Projects in Tirupati - 2 & 3 BHK Apartments",
   description:
     "Explore KPR Homes residential apartments in Tirupati - KPR Pride, Elite, Oakridge, Meridian, Exotica, Grandure, Zenith & Mokshitha Enclave. Luxury 2, 3 & 4 BHK flats with premium amenities. Buy apartments in Tirupati.",
   keywords: [
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     canonical: "https://kprhomes.in/projects/residential",
   },
   openGraph: {
-    title: "Residential Apartments in Tirupati by KPR Homes",
+    title: "Residential Projects in Tirupati by KPR Homes",
     description:
       "Premium 2, 3 & 4 BHK apartments with world-class amenities. Completed and ongoing residential projects in Tirupati.",
     url: "https://kprhomes.in/projects/residential",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Luxury Residential Apartments in Tirupati - KPR Homes",
+    title: "Residential Projects in Tirupati - KPR Homes",
     description:
       "Explore premium 2, 3 & 4 BHK apartments. KPR Pride, Elite, Oakridge, Meridian, Exotica, Grandure, Zenith.",
   },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const residentialJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "KPR Homes Residential Apartments in Tirupati",
+  name: "KPR Homes Residential Projects in Tirupati",
   description: "Premium residential apartment projects by KPR Homes in Tirupati, Andhra Pradesh",
   url: "https://kprhomes.in/projects/residential",
   numberOfItems: 9,
@@ -66,10 +66,11 @@ export default function ResidentialPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(residentialJsonLd) }}
       />
       <ProjectHero
-        title="Residential Apartments"
-        subtitle="Premium living spaces designed for modern lifestyles"
+        label="KPR Developments"
+        title="Residential Projects"
+        subtitle="Premium Homes. Thoughtfully Built. Apartments developed and sold by KPR Homes in Tirupati."
       />
-      <ProjectQuickNav />
+      <ProjectQuickNav variant="residential" />
       <ProjectGrid projects={projects} />
     </>
   );

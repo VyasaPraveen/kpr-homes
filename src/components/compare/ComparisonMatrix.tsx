@@ -60,7 +60,7 @@ export default function ComparisonMatrix() {
           </tr>
         </thead>
 
-        <tbody>
+        {/* one <tbody> per category (a <tbody> may not contain another <tbody>) */}
           {categories.map((category) => {
             const features = packageFeatures.filter((f) => f.category === category);
             const isExpanded = expandedCategories.includes(category);
@@ -143,7 +143,7 @@ export default function ComparisonMatrix() {
               </motion.tbody>
             );
           })}
-        </tbody>
+
       </table>
     </div>
   );

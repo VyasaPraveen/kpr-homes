@@ -2,15 +2,23 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle, Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Send, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+import { cn, isValidEmail, isValidPhone, isRateLimited } from "@/lib/utils";
 
+// Text goes into a URL-encoded WhatsApp message (never into HTML), so strip control
+// characters and cap length rather than HTML-escaping (which showed "&#x27;" in WhatsApp).
+const cleanText = (v: string, max = 1000) =>
+  v.replace(/[\u0000-\u0008\u000B-\u001F\u007F]/g, "").trim().slice(0, max);
+import { SITE_CONFIG } from "@/lib/constants";
+
+// KPR Construction = contract work for clients; KPR Developments = flats KPR sells.
 const projectTypes = [
-  "Residential - New Construction",
-  "Residential - Renovation",
-  "Commercial - Office Building",
-  "Commercial - Retail Space",
-  "Interior Design",
+  "Residential - New Construction Contract",
+  "Residential - Renovation Contract",
+  "Commercial - New Construction Contract (Hospital, Office, Bank)",
+  "Commercial - Renovation Contract",
+  "Apartment Construction Contract for Landowners",
+  "Buy a Flat (Available Flats)",
   "Other",
 ];
 
@@ -23,9 +31,19 @@ const budgetRanges = [
   "Above ₹5 Crore",
 ];
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  projectType?: string;
+  message?: string;
+  rateLimit?: string;
+}
+
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,16 +56,72 @@ export default function ContactForm() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error on change
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
+    const sanitizedName = cleanText(formData.name, 100);
+
+    if (!sanitizedName || sanitizedName.length < 2) {
+      newErrors.name = "Please enter a valid name (min 2 characters)";
+    }
+    if (!isValidEmail(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!isValidPhone(formData.phone.trim())) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+    if (!formData.projectType) {
+      newErrors.projectType = "Please select a project type";
+    }
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      newErrors.message = "Please describe your project (min 10 characters)";
+    }
+    if (isRateLimited("contact-form")) {
+      newErrors.rateLimit = "Too many submissions. Please try again later.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
+
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    try {
+      // Sanitize all inputs before sending
+      const sanitizedData = {
+        name: cleanText(formData.name, 100),
+        email: formData.email.trim().toLowerCase(),
+        phone: formData.phone.trim(),
+        projectType: formData.projectType,
+        budget: formData.budget,
+        message: cleanText(formData.message, 1000),
+      };
+
+      // Send via WhatsApp as the primary submission method
+      const whatsappMessage = `New Enquiry from Website:\n\nName: ${sanitizedData.name}\nEmail: ${sanitizedData.email}\nPhone: ${sanitizedData.phone}\nProject: ${sanitizedData.projectType}\nBudget: ${sanitizedData.budget || "Not specified"}\n\nMessage: ${sanitizedData.message}`;
+      window.open(
+        `${SITE_CONFIG.socialLinks.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    } catch {
+      setIsSubmitting(false);
+      setErrors({ rateLimit: "Something went wrong. Please try again." });
+    }
   };
 
   return (
@@ -58,6 +132,8 @@ export default function ContactForm() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center py-16"
+          role="status"
+          aria-live="polite"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -77,6 +153,7 @@ export default function ContactForm() {
             onClick={() => {
               setIsSubmitted(false);
               setFormData({ name: "", email: "", phone: "", projectType: "", budget: "", message: "" });
+              setErrors({});
             }}
             className="text-gold-600 hover:text-gold-700 font-medium"
           >
@@ -90,24 +167,36 @@ export default function ContactForm() {
           animate={{ opacity: 1 }}
           onSubmit={handleSubmit}
           className="space-y-6"
+          noValidate
         >
           <h2 className="font-heading text-2xl font-bold text-navy-900 mb-6">
             Send Us a Message
           </h2>
 
+          {errors.rateLimit && (
+            <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm" role="alert">
+              <AlertCircle className="w-4 h-4 shrink-0" />
+              {errors.rateLimit}
+            </div>
+          )}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <FloatingInput label="Full Name" name="name" value={formData.name} onChange={handleChange} required />
-            <FloatingInput label="Email Address" name="email" type="email" value={formData.email} onChange={handleChange} required />
+            <FloatingInput label="Full Name" name="name" value={formData.name} onChange={handleChange} required error={errors.name} />
+            <FloatingInput label="Email Address" name="email" type="email" value={formData.email} onChange={handleChange} required error={errors.email} />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <FloatingInput label="Phone Number" name="phone" type="tel" value={formData.phone} onChange={handleChange} required />
+            <FloatingInput label="Phone Number" name="phone" type="tel" value={formData.phone} onChange={handleChange} required error={errors.phone} />
             <div className="relative">
               <select
                 name="projectType"
                 value={formData.projectType}
                 onChange={handleChange}
-                className="w-full px-4 py-3.5 border-2 border-charcoal-200 rounded-lg text-charcoal-700 focus:border-gold-400 focus:outline-none transition-colors bg-white appearance-none cursor-pointer"
+                aria-label="Project Type"
+                className={cn(
+                  "w-full px-4 py-3.5 border-2 rounded-lg text-charcoal-700 focus:border-gold-400 focus:outline-none transition-colors bg-white appearance-none cursor-pointer",
+                  errors.projectType ? "border-red-400" : "border-charcoal-200"
+                )}
                 required
               >
                 <option value="">Select Project Type</option>
@@ -115,6 +204,9 @@ export default function ContactForm() {
                   <option key={type} value={type}>{type}</option>
                 ))}
               </select>
+              {errors.projectType && (
+                <p className="text-red-500 text-xs mt-1">{errors.projectType}</p>
+              )}
             </div>
           </div>
 
@@ -123,6 +215,7 @@ export default function ContactForm() {
               name="budget"
               value={formData.budget}
               onChange={handleChange}
+              aria-label="Budget Range"
               className="w-full px-4 py-3.5 border-2 border-charcoal-200 rounded-lg text-charcoal-700 focus:border-gold-400 focus:outline-none transition-colors bg-white appearance-none cursor-pointer"
             >
               <option value="">Select Budget Range (Optional)</option>
@@ -139,9 +232,17 @@ export default function ContactForm() {
               onChange={handleChange}
               rows={5}
               placeholder="Tell us about your project..."
-              className="w-full px-4 py-3.5 border-2 border-charcoal-200 rounded-lg text-charcoal-700 focus:border-gold-400 focus:outline-none transition-colors resize-none placeholder:text-charcoal-300"
+              aria-label="Project message"
+              maxLength={2000}
+              className={cn(
+                "w-full px-4 py-3.5 border-2 rounded-lg text-charcoal-700 focus:border-gold-400 focus:outline-none transition-colors resize-none placeholder:text-charcoal-300",
+                errors.message ? "border-red-400" : "border-charcoal-200"
+              )}
               required
             />
+            {errors.message && (
+              <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+            )}
           </div>
 
           <motion.button
@@ -171,6 +272,7 @@ function FloatingInput({
   value,
   onChange,
   required = false,
+  error,
 }: {
   label: string;
   name: string;
@@ -178,6 +280,7 @@ function FloatingInput({
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
+  error?: string;
 }) {
   const [focused, setFocused] = useState(false);
   const isActive = focused || value.length > 0;
@@ -192,9 +295,13 @@ function FloatingInput({
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         required={required}
+        maxLength={type === "email" ? 254 : type === "tel" ? 15 : 100}
+        autoComplete={type === "email" ? "email" : type === "tel" ? "tel" : "name"}
+        aria-label={label}
+        aria-invalid={!!error}
         className={cn(
           "w-full px-4 py-3.5 border-2 rounded-lg text-charcoal-700 focus:outline-none transition-all peer",
-          focused ? "border-gold-400" : "border-charcoal-200"
+          error ? "border-red-400" : focused ? "border-gold-400" : "border-charcoal-200"
         )}
         placeholder=" "
       />
@@ -208,6 +315,9 @@ function FloatingInput({
       >
         {label}
       </label>
+      {error && (
+        <p className="text-red-500 text-xs mt-1">{error}</p>
+      )}
     </div>
   );
 }

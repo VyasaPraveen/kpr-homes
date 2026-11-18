@@ -9,11 +9,16 @@ interface StarRatingProps {
 
 export default function StarRating({ rating, size = 16, className = "" }: StarRatingProps) {
   return (
-    <div className={cn("flex gap-0.5", className)}>
+    <div
+      className={cn("flex gap-0.5", className)}
+      role="img"
+      aria-label={`Rating: ${rating} out of 5 stars`}
+    >
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
           size={size}
+          aria-hidden="true"
           className={cn(star <= rating ? "fill-gold-400 text-gold-400" : "fill-gray-200 text-gray-200")}
         />
       ))}

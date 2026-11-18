@@ -33,7 +33,7 @@ const reasons = [
     icon: ThumbsUp,
     title: "Customer First",
     description:
-      "98% client satisfaction rate. We build relationships as strong as our structures.",
+      "99% client satisfaction rate. We build relationships as strong as our structures.",
   },
 ];
 
@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80')",
+              "url('/images/projects/residential/kpr-exotica-1.jpg')",
           }}
         />
         <div className="absolute inset-0 bg-navy-950/90" />

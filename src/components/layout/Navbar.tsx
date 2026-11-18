@@ -7,6 +7,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SITE_CONFIG } from "@/lib/constants";
 import { navigation } from "@/data/navigation";
 
 export default function Navbar() {
@@ -45,21 +46,21 @@ export default function Navbar() {
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
-              className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5"
+              className="bg-white rounded-lg px-2.5 py-1 shadow-sm"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/kpr-logo.png"
                 alt="KPR Homes - We create landmarks"
-                width={160}
-                height={48}
-                className="h-12 w-auto object-contain"
+                width={555}
+                height={240}
+                className="h-12 sm:h-14 lg:h-16 w-auto object-contain"
                 priority
               />
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-0.5 mx-4">
+          <nav className="hidden xl:flex items-center gap-0.5 mx-4">
             {navigation.map((item) => (
               <div
                 key={item.label}
@@ -133,11 +134,11 @@ export default function Navbar() {
           {/* CTA + Mobile Toggle */}
           <div className="flex-shrink-0 flex items-center gap-4">
             <a
-              href="tel:+919849351276"
-              className="hidden lg:flex items-center gap-2 text-white hover:text-gold-400 transition-colors text-sm whitespace-nowrap"
+              href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}
+              className="hidden 2xl:flex items-center gap-2 text-white hover:text-gold-400 transition-colors text-sm whitespace-nowrap"
             >
               <Phone className="w-4 h-4" />
-              <span>+91 98493 51276</span>
+              <span>{SITE_CONFIG.phone}</span>
             </a>
             <Link
               href="/cost-estimator"
@@ -216,11 +217,11 @@ export default function Navbar() {
                   Get Free Estimate
                 </Link>
                 <a
-                  href="tel:+919849351276"
+                  href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}
                   className="flex items-center justify-center gap-2 mt-4 text-white hover:text-gold-400 transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>+91 98493 51276</span>
+                  <span>{SITE_CONFIG.phone}</span>
                 </a>
               </div>
             </div>

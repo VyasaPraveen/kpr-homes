@@ -5,43 +5,43 @@ import ProjectQuickNav from "@/components/projects/ProjectQuickNav";
 import { getProjectsByCategory } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Commercial Buildings in Tirupati - Office & Retail Spaces",
+  title: "Construction Contracts in Tirupati - Homes & Hospitals",
   description:
-    "Explore KPR Homes commercial buildings in Tirupati - Lucky's 1 & 2, KCN, PCR, Anand Mythri. Premium office buildings, retail complexes, and commercial spaces in Tirupati, Andhra Pradesh.",
+    "KPR Construction, the contract-construction wing of KPR Homes, builds homes, apartments for landowners, hospitals, offices, banks and commercial complexes in Tirupati. See Lucky's 1 & 2, KCN, PCR and Anand Mythri.",
   keywords: [
-    "commercial buildings Tirupati",
-    "office buildings Tirupati",
-    "retail space construction Tirupati",
-    "commercial construction Andhra Pradesh",
-    "KPR Homes commercial projects",
-    "shopping complex Tirupati",
-    "office space for rent Tirupati",
-    "commercial property Tirupati",
-    "building contractor commercial Tirupati",
-    "mixed use development Tirupati",
+    "construction contractor Tirupati",
+    "building contractor Tirupati",
+    "turnkey construction Tirupati",
+    "house construction contract Tirupati",
+    "hospital construction Tirupati",
+    "commercial building construction Tirupati",
+    "apartment construction for landowners Tirupati",
+    "KPR Construction",
+    "KPR Homes construction contracts",
+    "construction cost per sq ft Tirupati",
   ],
   alternates: {
     canonical: "https://kprhomes.in/projects/commercial",
   },
   openGraph: {
-    title: "Commercial Buildings in Tirupati by KPR Homes",
+    title: "Construction Contracts in Tirupati by KPR Homes",
     description:
-      "State-of-the-art commercial spaces - office buildings, retail complexes. Completed and ongoing projects in Tirupati.",
+      "We build your vision - turnkey construction of homes, hospitals, offices and commercial buildings for clients in Tirupati.",
     url: "https://kprhomes.in/projects/commercial",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Commercial Buildings in Tirupati - KPR Homes",
+    title: "Construction Contracts in Tirupati - KPR Homes",
     description:
-      "Premium office buildings & retail complexes. Lucky's 1 & 2, KCN, PCR, Anand Mythri projects.",
+      "Turnkey construction for clients: homes, hospitals, offices, banks & commercial complexes. Lucky's 1 & 2, KCN, PCR, Anand Mythri.",
   },
 };
 
 const commercialJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "KPR Homes Commercial Buildings in Tirupati",
-  description: "Premium commercial building projects by KPR Homes in Tirupati, Andhra Pradesh",
+  name: "KPR Homes Construction Contracts in Tirupati",
+  description: "Construction projects built by KPR Homes for clients in Tirupati, Andhra Pradesh",
   url: "https://kprhomes.in/projects/commercial",
   numberOfItems: 5,
   itemListElement: [
@@ -62,10 +62,11 @@ export default function CommercialPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(commercialJsonLd) }}
       />
       <ProjectHero
-        title="Commercial Buildings"
-        subtitle="State-of-the-art commercial spaces built for the future"
+        label="KPR Construction"
+        title="Construction Contracts"
+        subtitle="We Build Your Vision. Turnkey construction of homes, apartments for landowners, hospitals, offices, banks and commercial complexes."
       />
-      <ProjectQuickNav />
+      <ProjectQuickNav variant="contracts" />
       <ProjectGrid projects={projects} />
     </>
   );

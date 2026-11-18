@@ -22,17 +22,17 @@ import VisitorCounter from "@/components/layout/VisitorCounter";
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Commercial Buildings", href: "/projects/commercial" },
-  { label: "Residential Apartments", href: "/projects/residential" },
+  { label: "Construction Contracts", href: "/projects/commercial" },
+  { label: "Residential Projects", href: "/projects/residential" },
+  { label: "Available Flats", href: "/available-flats" },
   { label: "Cost Estimator", href: "/cost-estimator" },
   { label: "Compare Packages", href: "/compare-packages" },
   { label: "Testimonials", href: "/testimonials" },
-  { label: "Refer a Friend", href: "/refer" },
 ];
 
 const serviceLinks = [
-  { label: "Residential Construction", href: "/projects/residential" },
-  { label: "Commercial Buildings", href: "/projects/commercial" },
+  { label: "Residential Construction", href: "/projects/commercial" },
+  { label: "Commercial Construction", href: "/projects/commercial" },
   { label: "Interior Design", href: "/contact" },
   { label: "Renovation", href: "/contact" },
   { label: "Project Management", href: "/contact" },
@@ -51,9 +51,16 @@ function QuickEnquiryForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hi, I'm ${formData.name}. My phone number is ${formData.phone}. I'm interested in your services. Please contact me.`;
-    const whatsappUrl = `https://wa.me/919849351276?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
+    const safeName = formData.name.replace(/[<>"'`]/g, "").trim();
+    const safePhone = formData.phone.replace(/[^0-9+\s-]/g, "").trim();
+    if (!safeName || !safePhone || safePhone.length < 10) return;
+
+    const message = `Hi, I'm ${safeName}. My phone number is ${safePhone}. I'm interested in your services. Please contact me.`;
+    window.open(
+      `${SITE_CONFIG.socialLinks.whatsapp}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
     setFormData({ name: "", phone: "" });
   };
 
@@ -65,6 +72,9 @@ function QuickEnquiryForm() {
         value={formData.name}
         onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
         required
+        maxLength={100}
+        autoComplete="name"
+        aria-label="Your Name"
         className="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-gold-400/50 transition-colors"
       />
       <input
@@ -73,6 +83,9 @@ function QuickEnquiryForm() {
         value={formData.phone}
         onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
         required
+        maxLength={15}
+        autoComplete="tel"
+        aria-label="Phone Number"
         className="w-full px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-gold-400/50 transition-colors"
       />
       <motion.button
@@ -99,13 +112,13 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
             {/* Company Info */}
             <div className="lg:col-span-1">
-              <Link href="/" className="flex items-center mb-6 group">
+              <Link href="/" className="inline-flex items-center mb-6 group bg-white rounded-lg px-3 py-1.5">
                 <Image
-                  src="/images/logo.png"
+                  src="/images/kpr-logo.png"
                   alt="KPR Homes - We create landmarks"
-                  width={140}
-                  height={42}
-                  className="h-10 w-auto object-contain group-hover:opacity-90 transition-opacity"
+                  width={555}
+                  height={240}
+                  className="h-14 w-auto object-contain group-hover:opacity-90 transition-opacity"
                 />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">

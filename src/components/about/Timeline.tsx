@@ -16,7 +16,7 @@ export default function Timeline() {
           <div className="space-y-12">
             {timeline.map((event, i) => (
               <motion.div
-                key={event.year}
+                key={`${event.year}-${event.title}`}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-50px" }}

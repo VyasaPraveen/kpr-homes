@@ -10,10 +10,10 @@ export const services: Service[] = [
   },
   {
     id: "2",
-    title: "Commercial Buildings",
-    description: "State-of-the-art office complexes, IT parks, and retail spaces engineered for productivity and designed for the future.",
+    title: "Commercial Construction",
+    description: "Hospitals, offices, banks and commercial complexes built on contract, engineered for daily use and designed for the future.",
     icon: "Building2",
-    features: ["Grade A Offices", "IT Parks", "Shopping Complexes", "Warehouses"],
+    features: ["Hospitals", "Offices", "Banks", "Commercial Complexes"],
   },
   {
     id: "3",
