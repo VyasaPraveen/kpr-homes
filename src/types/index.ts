@@ -14,6 +14,8 @@ export interface Project {
   thumbnail: string;
   client?: string;
   duration?: string;
+  /** Other spellings visitors may type (used by the chat assistant). */
+  aliases?: string[];
 }
 
 export interface TeamMember {

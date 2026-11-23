@@ -6,7 +6,7 @@ export const BASE_RATES = {
 
 export const CONSTRUCTION_TYPES = [
   { id: "new", label: "New Construction", multiplier: 1.0 },
-  { id: "renovation", label: "Renovation", multiplier: 0.6 },
+  { id: "renovation", label: "Renovation", multiplier: 1.0 },
 ] as const;
 
 // Shares of the total construction cost; must add up to 1.

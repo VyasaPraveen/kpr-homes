@@ -7,7 +7,7 @@ import { getProjectsByCategory } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Residential Projects in Tirupati - 2 & 3 BHK Apartments",
   description:
-    "Explore KPR Homes residential apartments in Tirupati - KPR Pride, Elite, Oakridge, Meridian, Exotica, Grandure, Zenith & Mokshitha Enclave. Luxury 2, 3 & 4 BHK flats with premium amenities. Buy apartments in Tirupati.",
+    "Explore KPR Homes residential apartments in Tirupati - KPR Pride, Elite, Oakridge, Meridian, Exotica, Grandure, Zenith, Royalridge & Mokshitha Enclave. Luxury 2, 3 & 4 BHK flats with premium amenities. Buy apartments in Tirupati.",
   keywords: [
     "residential apartments Tirupati",
     "luxury apartments Tirupati",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Residential Projects in Tirupati - KPR Homes",
     description:
-      "Explore premium 2, 3 & 4 BHK apartments. KPR Pride, Elite, Oakridge, Meridian, Exotica, Grandure, Zenith.",
+      "Explore premium 2, 3 & 4 BHK apartments. KPR Pride, Elite, Oakridge, Meridian, Exotica, Grandure, Zenith, Royalridge.",
   },
 };
 
@@ -43,7 +43,7 @@ const residentialJsonLd = {
   name: "KPR Homes Residential Projects in Tirupati",
   description: "Premium residential apartment projects by KPR Homes in Tirupati, Andhra Pradesh",
   url: "https://kprhomes.in/projects/residential",
-  numberOfItems: 9,
+  numberOfItems: 10,
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "KPR Pride", url: "https://kprhomes.in/projects/kpr-pride" },
     { "@type": "ListItem", position: 2, name: "KPR Elite", url: "https://kprhomes.in/projects/kpr-elite" },
@@ -54,6 +54,7 @@ const residentialJsonLd = {
     { "@type": "ListItem", position: 7, name: "KPR Exotica", url: "https://kprhomes.in/projects/kpr-exotica" },
     { "@type": "ListItem", position: 8, name: "KPR Grandure", url: "https://kprhomes.in/projects/kpr-grandure" },
     { "@type": "ListItem", position: 9, name: "KPR Zenith", url: "https://kprhomes.in/projects/kpr-zenith" },
+    { "@type": "ListItem", position: 10, name: "KPR Royalridge", url: "https://kprhomes.in/projects/kpr-royalridge" },
   ],
 };
 

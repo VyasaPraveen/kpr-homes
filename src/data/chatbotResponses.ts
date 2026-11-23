@@ -87,8 +87,8 @@ const chatResponses: ChatResponse[] = [
     followUp: ["Our projects", "Contact info"],
   },
   {
-    keywords: ["award", "awards", "nominated", "nomination", "recognition", "achievement"],
-    response: `In 2023 our residential project **KPR Pride** was nominated for an award for its construction quality.`,
+    keywords: ["award", "awards", "nominated", "nomination", "recognition", "achievement", "ultratech", "best concrete structure"],
+    response: `In 2023 our residential project **KPR Pride** was nominated for **Best Concrete Structure** for the year 2023 by **UltraTech**.`,
     followUp: ["Residential projects", "About KPR Homes"],
   },
   {
@@ -133,7 +133,7 @@ const projectResponses: ChatResponse[] = projects.map((p) => {
         ? `residential project built by KPR Homes for ${p.client}`
         : "KPR residential project";
   return {
-    keywords: Array.from(new Set([title, plain, short, p.slug.replace(/-/g, " ")])),
+    keywords: Array.from(new Set([title, plain, short, p.slug.replace(/-/g, " "), ...(p.aliases ?? [])])),
     response: `**${p.title}** - ${p.status === "completed" ? "completed" : "ongoing"} ${kind} in ${p.location}.\n\n${p.description}\n\n**Key features:** ${p.features.join(", ")}.`,
     followUp: p.category === "commercial" ? ["Contract projects", "Get estimate"] : ["Available flats", "Residential projects"],
     weight: 3,

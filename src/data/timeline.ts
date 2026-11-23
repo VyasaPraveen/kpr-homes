@@ -23,7 +23,7 @@ export const timeline: TimelineEvent[] = [
   },
   {
     year: 2023,
-    title: "Award Nomination - KPR Pride",
-    description: "Our residential project KPR Pride was nominated for an award in recognition of its construction quality.",
+    title: "UltraTech Award Nomination - KPR Pride",
+    description: "Our residential project KPR Pride was nominated for Best Concrete Structure for the year 2023 by UltraTech.",
   },
 ];

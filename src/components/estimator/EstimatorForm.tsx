@@ -13,7 +13,7 @@ import {
   Check,
   MessageCircle,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, isValidPhone } from "@/lib/utils";
 import { formatCurrency } from "@/lib/utils";
 import { SITE_CONFIG } from "@/lib/constants";
 import {
@@ -70,6 +70,34 @@ export default function EstimatorForm() {
   const [area, setArea] = useState(1500);
   const [constructionType, setConstructionType] = useState("new");
   const [quality, setQuality] = useState<"standard" | "premium" | "luxury">("premium");
+  const [quoteName, setQuoteName] = useState("");
+  const [quotePhone, setQuotePhone] = useState("");
+  const [quoteError, setQuoteError] = useState("");
+
+  // Plain text only, no control characters, length-capped.
+  const cleanField = (value: string, max: number) =>
+    value.replace(/[\u0000-\u001f\u007f<>]/g, " ").replace(/\s+/g, " ").trim().slice(0, max);
+
+  const requestDetailedQuote = () => {
+    const name = cleanField(quoteName, 80);
+    const phone = quotePhone.trim();
+    if (name.length < 2) {
+      setQuoteError("Please enter your name.");
+      return;
+    }
+    if (!isValidPhone(phone)) {
+      setQuoteError("Please enter a valid phone number.");
+      return;
+    }
+    setQuoteError("");
+    const typeLabel = CONSTRUCTION_TYPES.find((c) => c.id === constructionType)?.label || constructionType;
+    const message = `Hi KPR Homes, I used your Cost Estimator and would like a detailed quote.\n\nName: ${name}\nPhone: ${phone}\n\nProperty: ${PROPERTY_LABELS[propertyType]}\nArea: ${area.toLocaleString()} sq ft\nQuality: ${quality}\nType: ${typeLabel}\nEstimated Cost: ${formatCurrency(totalCost)}`;
+    window.open(
+      `${SITE_CONFIG.socialLinks.whatsapp}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
 
   const constructionMultiplier =
     CONSTRUCTION_TYPES.find((c) => c.id === constructionType)?.multiplier ?? 1;
@@ -394,18 +422,61 @@ export default function EstimatorForm() {
                         </span>
                       </div>
                     </div>
-                    <motion.a
-                      href={`${SITE_CONFIG.socialLinks.whatsapp}?text=${encodeURIComponent(
-                        `Hi KPR Homes, I used your Cost Estimator:\n\nProperty: ${PROPERTY_LABELS[propertyType]}\nArea: ${area.toLocaleString()} sq ft\nQuality: ${quality}\nType: ${CONSTRUCTION_TYPES.find((c) => c.id === constructionType)?.label || constructionType}\nEstimated Cost: ${formatCurrency(totalCost)}\n\nPlease share a detailed quote.`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="block w-full py-3 bg-gradient-gold text-navy-900 font-semibold rounded-lg text-center"
+                    <form
+                      noValidate
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        requestDetailedQuote();
+                      }}
+                      className="space-y-3"
                     >
-                      Get Detailed Quote
-                    </motion.a>
+                      <div>
+                        <label htmlFor="quote-name" className="block text-xs text-gray-300 mb-1">
+                          Your Name
+                        </label>
+                        <input
+                          id="quote-name"
+                          type="text"
+                          autoComplete="name"
+                          maxLength={80}
+                          required
+                          value={quoteName}
+                          onChange={(e) => setQuoteName(e.target.value)}
+                          className="w-full rounded-lg bg-white/10 border border-white/20 px-3 py-2 text-sm text-white placeholder:text-gray-400 focus:outline-none focus:border-gold-400"
+                          placeholder="Full name"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="quote-phone" className="block text-xs text-gray-300 mb-1">
+                          Phone Number
+                        </label>
+                        <input
+                          id="quote-phone"
+                          type="tel"
+                          inputMode="tel"
+                          autoComplete="tel"
+                          maxLength={16}
+                          required
+                          value={quotePhone}
+                          onChange={(e) => setQuotePhone(e.target.value)}
+                          className="w-full rounded-lg bg-white/10 border border-white/20 px-3 py-2 text-sm text-white placeholder:text-gray-400 focus:outline-none focus:border-gold-400"
+                          placeholder="10-digit mobile number"
+                        />
+                      </div>
+                      {quoteError && (
+                        <p role="alert" className="text-red-300 text-xs">
+                          {quoteError}
+                        </p>
+                      )}
+                      <motion.button
+                        type="submit"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="block w-full py-3 bg-gradient-gold text-navy-900 font-semibold rounded-lg text-center"
+                      >
+                        Get Detailed Quote
+                      </motion.button>
+                    </form>
                     <p className="text-gray-500 text-xs mt-3 text-center">
                       *Approximate construction cost only. GST, registration and interiors are not included. Actual costs may vary.
                     </p>
