@@ -5,7 +5,7 @@ import TestimonialGrid from "@/components/testimonials/TestimonialGrid";
 export const metadata: Metadata = {
   title: "Client Testimonials & Reviews - Tirupati's Trusted Builder",
   description:
-    "What KPR Homes clients in Tirupati say about our apartments and construction contracts. See why homeowners and businesses trust us to build in Tirupati, Andhra Pradesh.",
+    "Real Google reviews of KPR Homes in Tirupati: KPR Oak Ridge is rated 5.0 out of 5 from 7 Google reviews. See what our residents say.",
   keywords: [
     "KPR Homes reviews",
     "construction company reviews Tirupati",
@@ -22,16 +22,16 @@ export const metadata: Metadata = {
     canonical: "https://kprhomes.in/testimonials",
   },
   openGraph: {
-    title: "KPR Homes Client Testimonials - 150+ Happy Clients in Tirupati",
+    title: "KPR Homes Reviews - KPR Oak Ridge Rated 5.0 on Google",
     description:
-      "Hear from our clients. Discover why KPR Homes is Tirupati's most trusted construction company.",
+      "KPR Oak Ridge is rated 5.0 out of 5 from 7 Google reviews.",
     url: "https://kprhomes.in/testimonials",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KPR Homes Reviews - 150+ Happy Clients in Tirupati",
+    title: "KPR Homes Reviews - Rated 5.0 on Google",
     description:
-      "What homeowners and businesses in Tirupati say about KPR Homes.",
+      "KPR Oak Ridge is rated 5.0 out of 5 from 7 Google reviews.",
   },
 };
 

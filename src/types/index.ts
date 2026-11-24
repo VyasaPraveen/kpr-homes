@@ -38,6 +38,12 @@ export interface Testimonial {
   projectType?: string;
   isVideo?: boolean;
   videoUrl?: string;
+  /** Project the reviewer is connected to, and its /projects slug. */
+  project?: string;
+  projectSlug?: string;
+  /** Where the review was posted, and the year it was posted. */
+  source?: "google";
+  year?: number;
 }
 
 export interface TimelineEvent {

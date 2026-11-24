@@ -1,61 +1,23 @@
 import { Testimonial } from "@/types";
 
+// Real Google reviews of KPR Oak Ridge (Avilali, Tirupati), as listed on Google Maps.
+// These reviewers left star ratings without written comments, so no quote text is shown.
+// Years are derived from Google's relative dates as seen on 2026-11-24.
+export const GOOGLE_REVIEWS = {
+  place: "KPR Oak Ridge",
+  rating: 5.0,
+  count: 7,
+  url: "https://www.google.com/maps/search/?api=1&query=KPR%20Oak%20Ridge%2C%20JC4M%2B473%2C%20Avilali%2C%20Andhra%20Pradesh%20517503",
+} as const;
+
+const oakridge = { project: "KPR Oakridge", projectSlug: "kpr-oakridge", source: "google" as const };
+
 export const testimonials: Testimonial[] = [
-  {
-    id: "1",
-    name: "Rajesh Kumar",
-    role: "CEO",
-    company: "TechVista Solutions",
-    content: "KPR Homes delivered our corporate headquarters on time and beyond expectations. The attention to detail and quality of construction is truly world-class. Every visitor compliments the building's design.",
-    rating: 5,
-    image: "",
-    projectType: "Commercial",
-  },
-  {
-    id: "2",
-    name: "Priya Sharma",
-    role: "Homeowner",
-    content: "Our dream home at KPR Meridian is everything we imagined and more. KPR Homes understood our vision perfectly and delivered a home that our family loves. The premium interiors and smart home features are exceptional.",
-    rating: 5,
-    image: "",
-    projectType: "Residential",
-  },
-  {
-    id: "3",
-    name: "Arun Mehta",
-    role: "Director",
-    company: "Retail Group",
-    content: "The Lucky's commercial project was handled with exceptional professionalism. KPR Homes managed the complex requirements of a mixed-use commercial space flawlessly. Their project management skills are outstanding.",
-    rating: 5,
-    image: "",
-    projectType: "Commercial",
-  },
-  {
-    id: "4",
-    name: "Sunita Reddy",
-    role: "Homeowner",
-    content: "We chose KPR Homes for our apartment at KPR Oakridge, and it was the best decision. The construction quality, the landscaping, and the community amenities are all top-notch. Highly recommend them!",
-    rating: 4,
-    image: "",
-    projectType: "Residential",
-  },
-  {
-    id: "5",
-    name: "Vikram Singh",
-    role: "Managing Partner",
-    company: "Singh & Associates",
-    content: "Professional, transparent, and reliable. KPR Homes renovated our office space and the transformation was remarkable. They completed the project within budget and the quality exceeded our expectations.",
-    rating: 5,
-    image: "",
-    projectType: "Commercial",
-  },
-  {
-    id: "6",
-    name: "Anjali Desai",
-    role: "Homeowner",
-    content: "Living at KPR Elite has been a dream come true. The spacious layouts, the amenities, and the construction quality are all premium. KPR Homes truly builds homes, not just buildings.",
-    rating: 5,
-    image: "",
-    projectType: "Residential",
-  },
+  { id: "1", name: "Vishnu Reddy Cheemalapati", role: "Google review", content: "", rating: 5, image: "", year: 2025, ...oakridge },
+  { id: "2", name: "Sindhuja Gaddam", role: "Google review", content: "", rating: 5, image: "", year: 2026, ...oakridge },
+  { id: "3", name: "Kaushik Vrg", role: "Google review", content: "", rating: 5, image: "", year: 2022, ...oakridge },
+  { id: "4", name: "Firoz Sheik", role: "Google review", content: "", rating: 5, image: "", year: 2022, ...oakridge },
+  { id: "5", name: "Mounika Kotti", role: "Google review", content: "", rating: 5, image: "", year: 2023, ...oakridge },
+  { id: "6", name: "J Balakrishna", role: "Google review", content: "", rating: 5, image: "", year: 2025, ...oakridge },
+  { id: "7", name: "SGR Enterprises", role: "Google review", content: "", rating: 5, image: "", year: 2026, ...oakridge },
 ];

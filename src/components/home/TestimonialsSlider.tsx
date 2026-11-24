@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StarRating from "@/components/ui/StarRating";
-import { testimonials } from "@/data/testimonials";
+import { testimonials, GOOGLE_REVIEWS } from "@/data/testimonials";
 
 export default function TestimonialsSlider() {
   const [current, setCurrent] = useState(0);
@@ -28,7 +28,7 @@ export default function TestimonialsSlider() {
       <div className="container-custom">
         <SectionHeading
           title="What Our Clients Say"
-          subtitle="Real stories from real clients who trusted us with their dreams"
+          subtitle={`Rated ${GOOGLE_REVIEWS.rating.toFixed(1)} out of 5 on Google by residents of ${GOOGLE_REVIEWS.place}`}
         />
 
         <div className="max-w-4xl mx-auto relative">
@@ -46,10 +46,17 @@ export default function TestimonialsSlider() {
                 <Quote className="w-8 h-8 text-gold-500" />
               </div>
 
-              {/* Testimonial Text */}
-              <p className="text-charcoal-700 text-lg md:text-xl leading-relaxed italic mb-8 max-w-3xl mx-auto">
-                &ldquo;{testimonials[current].content}&rdquo;
-              </p>
+              {/* Testimonial Text (only when the reviewer wrote one) */}
+              {testimonials[current].content ? (
+                <p className="text-charcoal-700 text-lg md:text-xl leading-relaxed italic mb-8 max-w-3xl mx-auto">
+                  &ldquo;{testimonials[current].content}&rdquo;
+                </p>
+              ) : (
+                <p className="text-charcoal-700 text-lg md:text-xl leading-relaxed mb-6 max-w-3xl mx-auto">
+                  Rated <span className="font-semibold text-navy-900">{testimonials[current].project ?? "KPR Homes"}</span>{" "}
+                  {testimonials[current].rating} out of 5 on Google
+                </p>
+              )}
 
               {/* Rating */}
               <StarRating
@@ -71,6 +78,7 @@ export default function TestimonialsSlider() {
                     {testimonials[current].role}
                     {testimonials[current].company &&
                       `, ${testimonials[current].company}`}
+                    {testimonials[current].year && ` · ${testimonials[current].year}`}
                   </p>
                 </div>
               </div>
@@ -92,6 +100,7 @@ export default function TestimonialsSlider() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
+                  aria-label={`Show review ${i + 1} of ${testimonials.length}`}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === current
                       ? "w-8 bg-gold-400"
@@ -108,6 +117,17 @@ export default function TestimonialsSlider() {
             >
               <ChevronRight className="w-5 h-5" />
             </motion.button>
+          </div>
+          <div className="text-center mt-8">
+            <a
+              href={GOOGLE_REVIEWS.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-navy-700 hover:text-gold-600 transition-colors"
+            >
+              See all {GOOGLE_REVIEWS.count} reviews on Google
+              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>

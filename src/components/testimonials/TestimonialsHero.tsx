@@ -1,15 +1,15 @@
 "use client";
 
 import { Star } from "lucide-react";
-import AnimatedCounter from "@/components/animations/AnimatedCounter";
 import PageHero from "@/components/ui/PageHero";
+import { GOOGLE_REVIEWS } from "@/data/testimonials";
 
 export default function TestimonialsHero() {
   return (
     <PageHero
       label="Client Reviews"
       title="Testimonials"
-      subtitle="Hear from the people who trusted us with their most important projects"
+      subtitle="What our residents say about KPR Homes on Google"
       paddingBottom="pb-20"
     >
       {/* Average Rating */}
@@ -23,9 +23,16 @@ export default function TestimonialsHero() {
           ))}
         </div>
         <span className="text-white font-bold text-lg">
-          <AnimatedCounter target={4.9} suffix="" />
+          {GOOGLE_REVIEWS.rating.toFixed(1)}
         </span>
-        <span className="text-white/50 text-sm">/ 5.0 average</span>
+        <a
+          href={GOOGLE_REVIEWS.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/70 text-sm underline-offset-2 hover:underline hover:text-white"
+        >
+          {GOOGLE_REVIEWS.count} Google reviews
+        </a>
       </div>
     </PageHero>
   );
